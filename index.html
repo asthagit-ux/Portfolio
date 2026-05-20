@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astha Gupta — Product Manager Portfolio</title>
+  <meta name="description" content="Astha Gupta — CS grad who builds from 0 → 1. Product Manager portfolio showcasing case studies, product thinking, and technical skills." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR — Netflix style ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-wordmark">ASTHA</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#thinking">Thinking</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="nav-icon-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-icon-btn nav-notify" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <span class="notify-dot"></span>
+      </button>
+      <div class="nav-profile">
+        <img src="images/profile.jpg" alt="Profile" class="nav-avatar" />
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="nav-caret"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <!-- Dark cinematic gradient background -->
+    <div class="hero-bg">
+      <div class="hero-gradient-base"></div>
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="hero-glow hero-glow-3"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-gradient-bottom"></div>
+    </div>
+
+    <!-- Left: Billboard content -->
+    <div class="hero-billboard">
+      <!-- N PORTFOLIO badge -->
+      <div class="hero-series-badge">
+        <svg viewBox="0 0 26 28" class="n-logo-small" aria-hidden="true">
+          <path d="M0 0h4.55l8.18 16.44V0H17.3v28h-4.32L4.55 11v17H0V0z" fill="#E50914"/>
+          <path d="M17.3 0h4.55v28H17.3V0z" fill="#B20710"/>
+          <path d="M21.85 0H26v28h-4.15V0z" fill="#E50914"/>
+        </svg>
+        <span class="series-label">P O R T F O L I O</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="title-line title-line-1">Astha</span>
+        <span class="title-line title-line-2">Gupta</span>
+      </h1>
+
+      <!-- Netflix metadata row -->
+      <div class="hero-match-row">
+        <span class="match-score">98% Match</span>
+        <span class="maturity-badge">PM</span>
+        <span class="meta-year">2026</span>
+        <span class="meta-detail">Manipal University Jaipur</span>
+      </div>
+
+      <p class="hero-synopsis">
+        CS grad who builds from <strong>0 → 1</strong>. Shipping products, writing PRDs, 
+        and reading pull requests — open to remote PM roles in AI, B2B, and fintech.
+      </p>
+
+      <!-- Availability -->
+      <div class="hero-availability-tag">
+        <span class="avail-dot"></span>
+        <span>Open to remote PM roles</span>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="hero-actions">
+        <a href="#projects" class="btn-play">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="play-icon"><polygon points="5,3 19,12 5,21"/></svg>
+          View My Work
+        </a>
+        <a href="#" class="btn-more-info">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12" stroke-linecap="round"/><circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/></svg>
+          Download Résumé
+        </a>
+      </div>
+
+      <!-- Genre tags -->
+      <div class="hero-genre-row">
+        <span class="genre-tag">Product Strategy</span>
+        <span class="genre-dot">·</span>
+        <span class="genre-tag">AI / ML</span>
+        <span class="genre-dot">·</span>
+        <span class="genre-tag">0 → 1 Builder</span>
+        <span class="genre-dot">·</span>
+        <span class="genre-tag">Data-Driven</span>
+      </div>
+    </div>
+
+    <!-- Right: Small profile portrait card -->
+    <div class="hero-portrait">
+      <div class="portrait-card">
+        <img src="images/profile.jpg" alt="Astha Gupta" class="portrait-img" />
+        <div class="portrait-overlay"></div>
+        <!-- Netflix-style bottom info on card -->
+        <div class="portrait-info">
+          <div class="portrait-name">Astha Gupta</div>
+          <div class="portrait-sub">Product Manager</div>
+        </div>
+      </div>
+      <!-- Netflix "Top 10" style rank badge -->
+      <div class="portrait-rank">
+        <span class="rank-number">1</span>
+        <span class="rank-label">PM to Watch</span>
+      </div>
+    </div>
+
+    <!-- Right-edge age badge -->
+    
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="about-section">
+      <div class="about-bg"></div>
+      <div class="about-content">
+        <div class="about-title-card">
+          <span class="section-label">ABOUT</span>
+        </div>
+        <h2 class="about-heading">Hi, I'm Astha Gupta</h2>
+        <p class="about-bio">
+          CS grad who builds from <strong>0 → 1</strong>. I ship AI products, write PRDs, run sprints, and read pull requests. Open to fast‑moving, cross‑functional roles in AI, B2B SaaS, fintech, and intelligent productivity products.
+        </p>
+
+        <!-- 3×2 Visual Card Grid -->
+        <div class="about-visual">
+          <!-- Card 1: AI Products -->
+          <div class="visual-card" data-index="1">
+            <svg class="visual-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            <div class="visual-title">AI Products</div>
+            <div class="visual-desc">Build intelligent solutions from concept to launch.</div>
+          </div>
+          <!-- Card 2: Workflow Systems -->
+          <div class="visual-card" data-index="2">
+            <svg class="visual-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2V5a2 2 0 00-2-2zm-9 14H7v-2h3v2zm0-4H7v-2h3v2zm0-4H7V7h3v2zm5 8h-3v-2h3v2zm0-4h-3v-2h3v2zm0-4h-3V7h3v2z"/></svg>
+            <div class="visual-title">Workflow Systems</div>
+            <div class="visual-desc">Design seamless pipelines for teams.</div>
+          </div>
+          <!-- Card 3: User Experiences -->
+          <div class="visual-card" data-index="3">
+            <svg class="visual-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a2 2 0 012 2v16a2 2 0 01-2 2H7a2 2 0 01-2-2V4a2 2 0 012-2zm5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+            <div class="visual-title">User Experiences</div>
+            <div class="visual-desc">Craft engaging UI/UX from 0→1.</div>
+          </div>
+          <!-- Card 4: Product Thinking -->
+          <div class="visual-card" data-index="4">
+            <svg class="visual-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14l5 5 9-9-1.5-1.5L9 16.2z"/></svg>
+            <div class="visual-title">Thinking & Execution</div>
+            <div class="visual-desc">PRDs, prototypes, technical trade‑offs.</div>
+          </div>
+          <!-- Card 5: Data Analytics -->
+          <div class="visual-card" data-index="5">
+            <svg class="visual-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18V3H3zm6 14H7v-5h2v5zm4 0h-2V7h2v10zm4 0h-2v-7h2v7z"/></svg>
+            <div class="visual-title">Data Analytics</div>
+            <div class="visual-desc">Turn metrics into actionable product insights.</div>
+          </div>
+          <!-- Card 6: Cross‑Functional Leadership -->
+          <div class="visual-card" data-index="6">
+            <svg class="visual-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            <div class="visual-title">Cross‑Functional</div>
+            <div class="visual-desc">Align engineering, design & business teams.</div>
+          </div>
+        </div>
+
+        <!-- Stat Numbers Row -->
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Products Shipped</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">PRDs Written</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Industries</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Curiosity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="projects" style="min-height: 100vh; padding: 80px 60px; background: #141414;"></section>
+  <section id="thinking" style="min-height: 100vh; padding: 80px 60px; background: #141414;"></section>
+  <section id="skills" style="min-height: 100vh; padding: 80px 60px; background: #141414;"></section>
+  <section id="contact" style="min-height: 100vh; padding: 80px 60px; background: #141414;"></section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
