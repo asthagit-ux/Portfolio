@@ -3,159 +3,677 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Studies — Alex Sharma · PM</title>
+  <title>Case Studies — Astha Gupta · Product Manager</title>
   <link rel="stylesheet" href="../css/style.css" />
+  
+  <!-- Premium Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #141414;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .full-screen-cs {
+      flex: 1;
+      padding: 100px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Tab switcher inspired by Netflix categories */
+    .cs-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .cs-tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #a1a1aa;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cs-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .cs-tab-btn.active {
+      background: #e50914;
+      color: #fff;
+      border-color: #e50914;
+      box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+    }
+
+    /* Case study container */
+    .cs-container {
+      display: none;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    .cs-container.active {
+      display: block;
+    }
+
+    /* 8-Part Structure Layout */
+    .cs-header-block {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+
+    .cs-one-liner {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 10px;
+      line-height: 1.4;
+      border-left: 4px solid #e50914;
+      padding-left: 20px;
+    }
+
+    .cs-section {
+      margin-bottom: 45px;
+    }
+
+    .cs-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cs-section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: #e50914;
+      border-radius: 2px;
+    }
+
+    .cs-text {
+      color: #a1a1aa;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .cs-text strong {
+      color: #fff;
+    }
+
+    /* Scorecard style for metrics */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .metric-card {
+      background: #18181b;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #e50914;
+      margin-bottom: 5px;
+    }
+
+    .metric-lbl {
+      font-size: 0.85rem;
+      color: #71717a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* Inline diagram styling */
+    .diagram-wrapper {
+      background: #0f0f10;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px 0;
+    }
+
+    .diagram-wrapper svg {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- ===== NAVBAR — Netflix style ===== -->
   <nav class="navbar" id="navbar">
-    <div class="nav-logo"><a href="../index.html"><span class="logo-text">ALEX<span class="logo-dot">.</span>PM</span></a></div>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="case-studies.html" class="active">Case Studies</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="contact.html" class="nav-cta">Hire Me</a>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <div class="nav-left">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-wordmark">ASTHA</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="case-studies.html" class="active">Case Studies</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="nav-icon-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-icon-btn nav-notify" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <span class="notify-dot"></span>
+      </button>
+      <div class="nav-profile">
+        <img src="../images/profile.jpg" alt="Profile" class="nav-avatar" />
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="nav-caret"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </nav>
 
-  <div class="page-header">
-    <div class="about-tag">📂 Portfolio</div>
-    <h1>Case Studies</h1>
-    <p>Deep dives into the problems I've solved, the decisions I made, and the outcomes I delivered.</p>
+  <!-- Main Content Wrapper -->
+  <div class="full-screen-cs">
+    <div class="page-header" style="text-align: center; margin-bottom: 50px;">
+      <div class="about-tag" style="background: rgba(229, 9, 20, 0.1); color: #e50914; display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px;">🍿 CASE DEEP DIVES</div>
+      <h1 style="font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 700; color: #fff; margin-bottom: 15px;">Product Case Studies</h1>
+      <p style="color: #a1a1aa; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.5;">Structured 8-part product breakdowns detailing problem definitions, user research, wireframe designs, and learnings.</p>
+    </div>
+
+    <!-- Tab Switcher -->
+    <div class="cs-tabs">
+      <button class="cs-tab-btn active" onclick="switchTab('innov-crm')">1. Innov CRM</button>
+      <button class="cs-tab-btn" onclick="switchTab('modelmetrics')">2. ModelMetrics</button>
+      <button class="cs-tab-btn" onclick="switchTab('marketingos')">3. MarketingOS</button>
+      <button class="cs-tab-btn" onclick="switchTab('researchos')">4. researchOS</button>
+    </div>
+
+    <!-- ==========================================
+         CASE STUDY 1: INNOV CRM
+         ========================================== -->
+    <div id="innov-crm" class="cs-container active">
+      <div class="cs-header-block">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">1. Title & Problem Definition</span>
+        <h2 class="cs-one-liner">Innov CRM: Streamlining B2B Sales Cycles by Eliminating Manual SLA Dispatch Gaps and Multi-User Stage Collisions</h2>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Context & Background</h3>
+        <p class="cs-text">
+          Enterprise sales teams handle dozens of high-value deals concurrently. Representatives spent roughly <strong>2.5 to 3 hours daily</strong> manually recording stage changes and writing email updates, leaving them less time to focus on active selling.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Problem Statement</h3>
+        <p class="cs-text">
+          How might we design a fast sales pipeline workspace that automates administrative tasks and keeps data consistent when multiple agents update the same records simultaneously?
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Research & Insights</h3>
+        <p class="cs-text">
+          During shadowing sessions, we discovered two core issues:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>SLA Drop-offs:</strong> 42% of sales leads went cold because representatives forgot to send follow-up details when a deal was moved to the "Contacted" stage.</li>
+          <li><strong>Database Race Conditions:</strong> When two representatives dragged the same deal card at the same time, database writes clashed, resulting in duplicate tasks and broken statuses.</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Solution & Reasoning</h3>
+        <p class="cs-text">
+          We built an interactive Kanban pipeline dashboard backed by an event-driven task listener. Moving a card to a new column automatically triggers the corresponding SLA task.
+        </p>
+        <p class="cs-text">
+          To solve write clashes without slowing down the UI, we used an <strong>optimistic locking database schema</strong>. When a collision occurs, the system flags it in the UI and resolves it safely instead of freezing the database connection.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">System & Flow Diagram</h3>
+        <div class="diagram-wrapper">
+          <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="180" rx="8" fill="#18181b"/>
+            <!-- Drag Card -->
+            <rect x="30" y="55" width="110" height="70" rx="6" fill="#27272a" stroke="#e50914" stroke-width="2"/>
+            <text x="45" y="90" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">DRAG DEAL CARD</text>
+            <text x="45" y="108" fill="#a1a1aa" font-family="'Inter'" font-size="10">Stage: Contacted</text>
+            
+            <!-- Arrow -->
+            <path d="M160 90H200" stroke="#a1a1aa" stroke-width="2" stroke-dasharray="4 4"/>
+            <polygon points="200,90 192,85 192,95" fill="#a1a1aa"/>
+            
+            <!-- Event Router -->
+            <rect x="220" y="45" width="130" height="90" rx="6" fill="#27272a" stroke="#71717a" stroke-width="1"/>
+            <text x="235" y="75" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">EVENT ROUTER</text>
+            <text x="235" y="95" fill="#a1a1aa" font-family="'Inter'" font-size="10">Checks Lock Version</text>
+            <text x="235" y="112" fill="#a1a1aa" font-family="'Inter'" font-size="10">Dispatches SLA Job</text>
+            
+            <!-- Arrow -->
+            <path d="M370 90H410" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="410,90 402,85 402,95" fill="#a1a1aa"/>
+            
+            <!-- Database Lock -->
+            <rect x="430" y="55" width="140" height="70" rx="6" fill="#27272a" stroke="#46d369" stroke-width="2"/>
+            <text x="445" y="90" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">OPTIMISTIC LOCK</text>
+            <text x="445" y="108" fill="#46d369" font-family="'Inter'" font-size="10">Version Matches -> Write OK</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Metrics to Measure Success</h3>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">-40%</div>
+            <div class="metric-lbl">Lead-to-Response Delay</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">350ms</div>
+            <div class="metric-lbl">Pipeline UI Lag</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">0</div>
+            <div class="metric-lbl">Database Write Clashes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Learnings & Tradeoffs</h3>
+        <p class="cs-text">
+          Optimistic locking was chosen over pessimistic locking because sales reps rarely edit the exact same deal card at the exact same millisecond. Choosing optimistic locking avoided database thread blockage and preserved rapid write speeds.
+        </p>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         CASE STUDY 2: MODELMETRICS
+         ========================================== -->
+    <div id="modelmetrics" class="cs-container">
+      <div class="cs-header-block">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">1. Title & Problem Definition</span>
+        <h2 class="cs-one-liner">ModelMetrics: Building an Interactive PCA Telemetry Dashboard to Simplify High-Value Customer Segmentation</h2>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Context & Background</h3>
+        <p class="cs-text">
+          Growth marketing teams need to divide users into segments to run targeted campaigns. In most companies, this requires writing complex SQL queries or asking data engineers to run localized Python notebooks.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Problem Statement</h3>
+        <p class="cs-text">
+          How might we give non-technical marketing leads a visual tool to explore multi-dimensional customer segments without waiting for manual CSV exports?
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Research & Insights</h3>
+        <p class="cs-text">
+          Shadowing data scientists and growth leads revealed a clear bottleneck:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Slow Turnaround Times:</strong> 80% of marketing campaigns were delayed because teams had to wait up to a week for data analysts to extract cohort segments.</li>
+          <li><strong>Difficult Visualizations:</strong> Standard dashboards showed static charts but did not let users interact with multi-dimensional datasets directly.</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Solution & Reasoning</h3>
+        <p class="cs-text">
+          We built an interactive 2D scatter plot interface representing Principal Component Analysis (PCA) clustering. Marketers can draw bounding boxes directly over visual clusters to isolate specific cohorts. A webhook action then pushes the selected cohort directly to marketing tools.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">System & Flow Diagram</h3>
+        <div class="diagram-wrapper">
+          <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="180" rx="8" fill="#18181b"/>
+            <!-- Scatter Plot -->
+            <rect x="30" y="35" width="130" height="110" rx="6" fill="#27272a" stroke="#71717a" stroke-width="1"/>
+            <circle cx="60" cy="70" r="4" fill="#e50914"/>
+            <circle cx="80" cy="60" r="4" fill="#e50914"/>
+            <circle cx="70" cy="90" r="4" fill="#e50914"/>
+            <circle cx="120" cy="110" r="4" fill="#0077b5"/>
+            <circle cx="130" cy="95" r="4" fill="#0077b5"/>
+            <text x="50" y="130" fill="#a1a1aa" font-family="'Inter'" font-size="9">PCA Scatter Visual</text>
+            
+            <!-- Arrow -->
+            <path d="M180 90H220" stroke="#a1a1aa" stroke-width="2" stroke-dasharray="4 4"/>
+            <polygon points="220,90 212,85 212,95" fill="#a1a1aa"/>
+            
+            <!-- Selection -->
+            <rect x="240" y="45" width="130" height="90" rx="6" fill="#27272a" stroke="#e50914" stroke-width="2"/>
+            <text x="255" y="75" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">DRAG SELECTION</text>
+            <text x="255" y="95" fill="#a1a1aa" font-family="'Inter'" font-size="10">Isolates coordinates</text>
+            <text x="255" y="112" fill="#e50914" font-family="'Inter'" font-size="10">Cohort Selected</text>
+            
+            <!-- Arrow -->
+            <path d="M390 90H430" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="430,90 422,85 422,95" fill="#a1a1aa"/>
+            
+            <!-- Target Hook -->
+            <rect x="450" y="55" width="120" height="70" rx="6" fill="#27272a" stroke="#46d369" stroke-width="2"/>
+            <text x="465" y="85" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">WEBHOOK RUN</text>
+            <text x="465" y="105" fill="#46d369" font-family="'Inter'" font-size="10">Pushed to CRM</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Metrics to Measure Success</h3>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">96.8%</div>
+            <div class="metric-lbl">Clustering Recall</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">15ms</div>
+            <div class="metric-lbl">Dashboard Render Time</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">3×</div>
+            <div class="metric-lbl">Decision Speedup</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Learnings & Tradeoffs</h3>
+        <p class="cs-text">
+          We chose to render the PCA chart on the client-side using lightweight Canvas drawing rather than SVG nodes. This maintained a fluid 60fps frame rate even when loading tens of thousands of data points, though it meant losing built-in CSS transitions on individual nodes.
+        </p>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         CASE STUDY 3: MARKETINGOS
+         ========================================== -->
+    <div id="marketingos" class="cs-container">
+      <div class="cs-header-block">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">1. Title & Problem Definition</span>
+        <h2 class="cs-one-liner">MarketingOS: Consolidating fragmented ad campaign cohorts and tracking real-time Lead Response Time</h2>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Context & Background</h3>
+        <p class="cs-text">
+          Performance marketing managers rely on multiple ad networks to acquire customers. They have to log into separate platforms to measure daily conversions, making optimization slow and manual.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Problem Statement</h3>
+        <p class="cs-text">
+          How might we unify ad campaign analytics into a single dashboard to track cohort performance and Lead Response Time in real-time?
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Research & Insights</h3>
+        <p class="cs-text">
+          Interviews with growth leads highlighted two major inefficiencies:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Manual Overhead:</strong> Marketing specialists spent an average of <strong>3.5 hours every morning</strong> copying and pasting campaign data into Excel sheets.</li>
+          <li><strong>Ad Spend Leakage:</strong> Fragmented data delayed campaign optimization, resulting in up to 15% wasted budget on non-converting ad groups.</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Solution & Reasoning</h3>
+        <p class="cs-text">
+          We built a multi-tenant workspace analytics dashboard that aggregates conversion metrics and tracks Lead Response Time (LRT) in real-time. By connecting data pipelines directly to active ad networks, we removed the need for manual reports.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">System & Flow Diagram</h3>
+        <div class="diagram-wrapper">
+          <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="180" rx="8" fill="#18181b"/>
+            <!-- Ads Sources -->
+            <rect x="30" y="45" width="110" height="90" rx="6" fill="#27272a" stroke="#71717a" stroke-width="1"/>
+            <text x="45" y="75" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">AD NETWORKS</text>
+            <text x="45" y="95" fill="#a1a1aa" font-family="'Inter'" font-size="10">API Feeds</text>
+            <text x="45" y="112" fill="#a1a1aa" font-family="'Inter'" font-size="10">(Google, FB...)</text>
+            
+            <!-- Arrow -->
+            <path d="M160 90H200" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="200,90 192,85 192,95" fill="#a1a1aa"/>
+            
+            <!-- MarketingOS Engine -->
+            <rect x="220" y="35" width="150" height="110" rx="6" fill="#27272a" stroke="#e50914" stroke-width="2"/>
+            <text x="235" y="65" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">INTEGRATION ENGINE</text>
+            <text x="235" y="85" fill="#a1a1aa" font-family="'Inter'" font-size="10">Unifies campaign data</text>
+            <text x="235" y="102" fill="#e50914" font-family="'Inter'" font-size="10">Computes LRT Metrics</text>
+            <text x="235" y="120" fill="#a1a1aa" font-family="'Inter'" font-size="10">Pushes to Redis Cache</text>
+            
+            <!-- Arrow -->
+            <path d="M390 90H430" stroke="#a1a1aa" stroke-width="2" stroke-dasharray="4 4"/>
+            <polygon points="430,90 422,85 422,95" fill="#a1a1aa"/>
+            
+            <!-- UI Dashboard -->
+            <rect x="450" y="45" width="120" height="90" rx="6" fill="#27272a" stroke="#46d369" stroke-width="2"/>
+            <text x="465" y="75" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">LIVE TELEMETRY</text>
+            <text x="465" y="95" fill="#a1a1aa" font-family="'Inter'" font-size="10">Unified dashboard</text>
+            <text x="465" y="112" fill="#46d369" font-family="'Inter'" font-size="10">100% Automatic</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Metrics to Measure Success</h3>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">+28%</div>
+            <div class="metric-lbl">Conversion Rate (CRO)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">0h</div>
+            <div class="metric-lbl">Manual Data Work</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">180%</div>
+            <div class="metric-lbl">Data Freshness Improvement</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Learnings & Tradeoffs</h3>
+        <p class="cs-text">
+          We prioritized daily conversion freshness over historical cold storage. Cohort queries are served from Redis cache layers, which speeds up real-time insights but caps retro-analyses to 90 days.
+        </p>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         CASE STUDY 4: RESEARCHOS
+         ========================================== -->
+    <div id="researchos" class="cs-container">
+      <div class="cs-header-block">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">1. Title & Problem Definition</span>
+        <h2 class="cs-one-liner">researchOS: Moving scholarly searches from raw keywords to context-aware semantic space matching</h2>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Context & Background</h3>
+        <p class="cs-text">
+          Academic researchers query thousands of papers. Traditional keyword search systems frequently miss relevant work because they do not understand the conceptual context behind different terms.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Problem Statement</h3>
+        <p class="cs-text">
+          How might we build a semantic search system that retrieves contextually relevant research papers and reduces empty results?
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Research & Insights</h3>
+        <p class="cs-text">
+          Analyzing user queries and results revealed clear search barriers:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>High Rate of Empty Results:</strong> 31% of academic queries returned no results because users wrote descriptive questions instead of exact matching terms.</li>
+          <li><strong>Fragmented Terminology:</strong> Search engines missed up to half of relevant papers because authors used different terminologies for the same core concepts.</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Solution & Reasoning</h3>
+        <p class="cs-text">
+          We built a semantic RAG (Retrieval-Augmented Generation) search pipeline. It translates user queries into vector space embeddings and searches papers based on conceptual distance, solving the limitations of keyword matching.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">System & Flow Diagram</h3>
+        <div class="diagram-wrapper">
+          <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="180" rx="8" fill="#18181b"/>
+            <!-- User Query -->
+            <rect x="30" y="55" width="110" height="70" rx="6" fill="#27272a" stroke="#71717a" stroke-width="1"/>
+            <text x="45" y="90" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">USER QUERY</text>
+            <text x="45" y="108" fill="#a1a1aa" font-family="'Inter'" font-size="9">Natural Language</text>
+            
+            <!-- Arrow -->
+            <path d="M160 90H200" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="200,90 192,85 192,95" fill="#a1a1aa"/>
+            
+            <!-- Embeddings Generator -->
+            <rect x="220" y="45" width="140" height="90" rx="6" fill="#27272a" stroke="#e50914" stroke-width="2"/>
+            <text x="235" y="75" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">VECTOR MATRIX</text>
+            <text x="235" y="95" fill="#a1a1aa" font-family="'Inter'" font-size="10">Translates search query</text>
+            <text x="235" y="112" fill="#e50914" font-family="'Inter'" font-size="10">to dense embeddings</text>
+            
+            <!-- Arrow -->
+            <path d="M380 90H420" stroke="#a1a1aa" stroke-width="2" stroke-dasharray="4 4"/>
+            <polygon points="420,90 412,85 412,95" fill="#a1a1aa"/>
+            
+            <!-- Vector DB -->
+            <rect x="440" y="55" width="130" height="70" rx="6" fill="#27272a" stroke="#46d369" stroke-width="2"/>
+            <text x="455" y="90" fill="#fff" font-family="'Outfit'" font-size="12" font-weight="bold">VECTOR MATCH</text>
+            <text x="455" y="108" fill="#46d369" font-family="'Inter'" font-size="10">Cosine Similarity DB</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Metrics to Measure Success</h3>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">91%</div>
+            <div class="metric-lbl">Search Success Rate</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">450ms</div>
+            <div class="metric-lbl">Vector Search Speed</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">-70%</div>
+            <div class="metric-lbl">Empty Search Results</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3 class="cs-section-title">Learnings & Tradeoffs</h3>
+        <p class="cs-text">
+          We selected a smaller, optimized sentence-transformer embedding model running locally rather than a cloud-hosted API. This reduced network latency from 1.2s to 450ms, though it slightly reduced retrieval accuracy on highly specialized biological papers.
+        </p>
+      </div>
+    </div>
+
   </div>
 
-  <div class="case-studies-grid">
-
-    <!-- Case Study 1 -->
-    <div class="cs-card" id="finpay">
-      <div class="cs-card-header cs-card-h1">
-        <span class="cs-card-cat">Fintech · Checkout</span>
-        <h2 class="cs-card-title">FinPay Checkout<br/>Redesign</h2>
-      </div>
-      <div class="cs-card-body">
-        <p>Razorpay's checkout drop-off was at 44% — one of the highest in the industry. I led a full redesign initiative spanning 6 months, 3 engineering squads, and 40+ user research sessions.</p>
-        <div class="cs-metrics">
-          <div class="cs-metric">
-            <div class="cs-metric-num">38%</div>
-            <div class="cs-metric-label">Drop-off reduction</div>
-          </div>
-          <div class="cs-metric">
-            <div class="cs-metric-num">4M+</div>
-            <div class="cs-metric-label">Users impacted</div>
-          </div>
-          <div class="cs-metric">
-            <div class="cs-metric-num">₹120Cr</div>
-            <div class="cs-metric-label">Revenue unlocked</div>
-          </div>
-        </div>
-        <div class="cs-tags">
-          <span>UX Research</span><span>A/B Testing</span><span>Growth</span><span>Payments</span>
-        </div>
-      </div>
+  <!-- Footer -->
+  <footer class="site-footer" style="padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; background: #0f0f10;">
+    <div class="footer-logo" style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 1px; color: #e50914; margin-bottom: 20px;">ASTHA</div>
+    <div class="footer-links" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+      <a href="../index.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Home</a>
+      <a href="about.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">About</a>
+      <a href="case-studies.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Case Studies</a>
+      <a href="skills.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Skills</a>
+      <a href="contact.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Contact</a>
     </div>
-
-    <!-- Case Study 2 -->
-    <div class="cs-card" id="saas">
-      <div class="cs-card-header cs-card-h2">
-        <span class="cs-card-cat">SaaS · Onboarding</span>
-        <h2 class="cs-card-title">TeamFlow<br/>Onboarding Revamp</h2>
-      </div>
-      <div class="cs-card-body">
-        <p>TeamFlow's activation rate was stuck at 22% — users signed up but never reached the "aha moment." I re-architected onboarding in 90 days using progressive disclosure and contextual nudges.</p>
-        <div class="cs-metrics">
-          <div class="cs-metric">
-            <div class="cs-metric-num">61%</div>
-            <div class="cs-metric-label">Activation rate</div>
-          </div>
-          <div class="cs-metric">
-            <div class="cs-metric-num">90</div>
-            <div class="cs-metric-label">Days to ship</div>
-          </div>
-          <div class="cs-metric">
-            <div class="cs-metric-num">3×</div>
-            <div class="cs-metric-label">Week-1 retention</div>
-          </div>
-        </div>
-        <div class="cs-tags">
-          <span>Onboarding</span><span>Retention</span><span>Analytics</span><span>PLG</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Case Study 3 -->
-    <div class="cs-card" id="consumer">
-      <div class="cs-card-header cs-card-h3">
-        <span class="cs-card-cat">Consumer · 0→1</span>
-        <h2 class="cs-card-title">ShopLens<br/>AR Try-On Launch</h2>
-      </div>
-      <div class="cs-card-body">
-        <p>Flipkart's fashion vertical had a 35% return rate driven by fit uncertainty. I conceptualized and launched AR try-on — Flipkart's first computer vision feature — in 8 months from scratch.</p>
-        <div class="cs-metrics">
-          <div class="cs-metric">
-            <div class="cs-metric-num">22%</div>
-            <div class="cs-metric-label">CVR uplift</div>
-          </div>
-          <div class="cs-metric">
-            <div class="cs-metric-num">2M+</div>
-            <div class="cs-metric-label">Users reached</div>
-          </div>
-          <div class="cs-metric">
-            <div class="cs-metric-num">18%</div>
-            <div class="cs-metric-label">Return rate drop</div>
-          </div>
-        </div>
-        <div class="cs-tags">
-          <span>0→1 Launch</span><span>AR/ML</span><span>Conversion</span><span>Fashion</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Case Study 4 -->
-    <div class="cs-card" id="search">
-      <div class="cs-card-header cs-card-h4">
-        <span class="cs-card-cat">Search · Infrastructure</span>
-        <h2 class="cs-card-title">Semantic Search<br/>Overhaul</h2>
-      </div>
-      <div class="cs-card-body">
-        <p>Google Search for emerging markets had a 31% null-result rate due to keyword-only matching. I led a cross-functional initiative to move to intent-based semantic search using transformer models.</p>
-        <div class="cs-metrics">
-          <div class="cs-metric">
-            <div class="cs-metric-num">40%</div>
-            <div class="cs-metric-label">Query success rate ↑</div>
-          </div>
-          <div class="cs-metric">
-            <div class="cs-metric-num">31%</div>
-            <div class="cs-metric-label">Null results ↓</div>
-          </div>
-          <div class="cs-metric">
-            <div class="cs-metric-num">18mo</div>
-            <div class="cs-metric-label">Timeline</div>
-          </div>
-        </div>
-        <div class="cs-tags">
-          <span>NLP</span><span>Infrastructure</span><span>Metrics</span><span>Cross-functional</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer class="site-footer">
-    <div class="footer-logo">ALEX<span class="logo-dot">.</span>PM</div>
-    <div class="footer-links">
-      <a href="../index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="case-studies.html">Case Studies</a>
-      <a href="skills.html">Skills</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <p class="footer-copy">© 2025 Alex Sharma · Product Manager Portfolio</p>
+    <p class="footer-copy" style="color: #71717a; font-size: 0.8rem;">© 2026 Astha Gupta · Product Manager Portfolio</p>
   </footer>
+
+  <!-- Switcher JavaScript -->
+  <script>
+    function switchTab(tabId) {
+      // Deactivate all tabs
+      document.querySelectorAll('.cs-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelectorAll('.cs-container').forEach(content => {
+        content.classList.remove('active');
+      });
+
+      // Activate selected tab
+      const activeBtn = Array.from(document.querySelectorAll('.cs-tab-btn')).find(btn => btn.textContent.toLowerCase().includes(tabId.replace('-', ' ')));
+      if (activeBtn) activeBtn.classList.add('active');
+      
+      const activeContainer = document.getElementById(tabId);
+      if (activeContainer) activeContainer.classList.add('active');
+    }
+  </script>
 
   <script src="../js/main.js"></script>
 </body>

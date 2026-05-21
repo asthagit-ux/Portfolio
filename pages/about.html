@@ -1,203 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Alex Sharma · PM</title>
+  <title>About Astha Gupta — Product Manager</title>
   <link rel="stylesheet" href="../css/style.css" />
+  
+  <!-- Premium Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #141414;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .full-screen-about {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      position: relative;
+    }
+  </style>
 </head>
-
 <body>
 
+  <!-- ===== NAVBAR — Netflix style ===== -->
   <nav class="navbar" id="navbar">
-    <div class="nav-logo"><a href="../index.html"><span class="logo-text">ALEX<span
-            class="logo-dot">.</span>PM</span></a></div>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="contact.html" class="nav-cta">Hire Me</a>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <div class="nav-left">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-wordmark">ASTHA</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="nav-icon-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-icon-btn nav-notify" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <span class="notify-dot"></span>
+      </button>
+      <div class="nav-profile">
+        <img src="../images/profile.jpg" alt="Profile" class="nav-avatar" />
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="nav-caret"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </nav>
 
-  <div class="page-header">
-    <div class="about-tag">🎬 My Story</div>
-    <h1>About Me</h1>
-    <p>The product leader behind the metrics. Here's a bit about who I am and why I love building products.</p>
+  <!-- About Section Content -->
+  <div class="full-screen-about">
+    <section class="about-section" id="about" style="border-top: none; width: 100%; max-width: 1200px; margin: 0 auto; background: transparent; padding: 40px 0;">
+      
+      <!-- Cinematic background -->
+      <div class="about-bg"></div>
+
+      <!-- Dark gradient overlays for readability -->
+      <div class="about-overlay-left"></div>
+      <div class="about-overlay-bottom"></div>
+
+      <div class="about-content" style="z-index: 2; width: 100%;">
+        <!-- Label badge -->
+        <div class="about-title-card" style="margin-bottom: 20px;">🎬 MY STORY</div>
+
+        <!-- Main heading -->
+        <h2 class="about-heading" style="font-size: 3.5rem; margin-bottom: 25px;">HI, I'M ASTHA GUPTA</h2>
+
+        <!-- Bio -->
+        <p class="about-bio" style="font-size: 1.1rem; line-height: 1.7; max-width: 800px; margin-bottom: 40px;">
+          I'm a <strong>fresher Product Manager</strong> with an engineering background and a
+          builder's mindset. I've spent the last year going deep on product thinking —
+          shipping side projects, completing internships, and obsessing over why users
+          do what they do. I don't just study products, I build them.
+          My superpower is sitting at the intersection of <strong>tech and empathy</strong> —
+          translating user problems into clear, scoped solutions that engineers love to build.
+          I'm currently exploring opportunities across <strong>AI, SaaS, and B2B workflow systems</strong>
+          where I can grow fast and make real impact from day one.
+        </p>
+
+        <!-- Specialty cards -->
+        <div class="about-visual" style="margin-bottom: 50px;">
+          <div class="visual-card">
+            <svg class="visual-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#E50914" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="visual-title">AI PRODUCTS</div>
+            <div class="visual-desc">Build intelligent RAG systems and segmentation models.</div>
+          </div>
+
+          <div class="visual-card">
+            <svg class="visual-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="7" height="7" rx="1" stroke="#E50914" stroke-width="2" />
+              <rect x="14" y="3" width="7" height="7" rx="1" stroke="#E50914" stroke-width="2" />
+              <rect x="3" y="14" width="7" height="7" rx="1" stroke="#E50914" stroke-width="2" />
+              <rect x="14" y="14" width="7" height="7" rx="1" stroke="#E50914" stroke-width="2" />
+            </svg>
+            <div class="visual-title">B2B WORKFLOWS</div>
+            <div class="visual-desc">Design drag-and-drop sales pipelines and SLA automation.</div>
+          </div>
+
+          <div class="visual-card">
+            <svg class="visual-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="8" r="4" stroke="#E50914" stroke-width="2" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#E50914" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <div class="visual-title">USER SENSE</div>
+            <div class="visual-desc">Translate user behaviors into intuitive PM schemas.</div>
+          </div>
+
+          <div class="visual-card">
+            <svg class="visual-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6L9 17l-5-5" stroke="#E50914" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="visual-title">PRD SPECIFICATIONS</div>
+            <div class="visual-desc">Outline RICE prioritization and relational SQL models.</div>
+          </div>
+        </div>
+
+        <!-- Quick stats row -->
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="stat-num">4+</span>
+            <span class="stat-label">Side Projects Built</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">2</span>
+            <span class="stat-label">Internships Completed</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Curiosity</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
   </div>
 
-  <div class="about-grid">
-    <div class="about-avatar">
-      <div class="avatar-placeholder">
-        🎯
-        <div class="avatar-name">Alex<br />Sharma</div>
-      </div>
+  <!-- Footer -->
+  <footer class="site-footer" style="padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; background: #0f0f10;">
+    <div class="footer-logo" style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 1px; color: #e50914; margin-bottom: 20px;">ASTHA</div>
+    <div class="footer-links" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+      <a href="../index.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Home</a>
+      <a href="about.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">About</a>
+      <a href="case-studies.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Case Studies</a>
+      <a href="skills.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Skills</a>
+      <a href="contact.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Contact</a>
     </div>
-    <div class="about-content">
-      <h2>I build products that make people's lives simpler.</h2>
-      <p>
-        I'm Alex Sharma, a Senior Product Manager currently at Google, where I lead Search Quality and Ads relevance for
-        emerging markets. I have 5+ years of experience shipping products across fintech, SaaS, and consumer apps.
-      </p>
-      <p>
-        My approach starts with deep user empathy — I believe the best products are born from obsessive listening and
-        rigorous experimentation. I've partnered with engineering, design, and data science teams across India,
-        Singapore, and the US to bring 12+ products from concept to scale.
-      </p>
-      <p>
-        Before Google, I was at Razorpay (payments for 4M+ merchants) and Flipkart (launched AR try-on for fashion). I'm
-        an IIT Delhi grad and a Reforge alum, with a particular love for growth mechanics and product-led growth models.
-      </p>
-
-      <div class="about-highlights">
-        <div class="highlight-item">
-          <div class="highlight-icon">🎓</div>
-          <div class="highlight-title">IIT Delhi</div>
-          <div class="highlight-desc">B.Tech Computer Science · 2019</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-icon">📍</div>
-          <div class="highlight-title">Based in Delhi, India</div>
-          <div class="highlight-desc">Open to global & remote roles</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-icon">🏆</div>
-          <div class="highlight-title">2× Product Launch of the Year</div>
-          <div class="highlight-desc">Razorpay 2021 · Flipkart 2020</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-icon">🔬</div>
-          <div class="highlight-title">Reforge Alumni</div>
-          <div class="highlight-desc">Product Strategy · Growth</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-icon">🌍</div>
-          <div class="highlight-title">Global Experience</div>
-          <div class="highlight-desc">India · Singapore · US</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-icon">📦</div>
-          <div class="highlight-title">12 Products Shipped</div>
-          <div class="highlight-desc">0→1 and scale-up products</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="footer-logo">ALEX<span class="logo-dot">.</span>PM</div>
-    <div class="footer-links">
-      <a href="../index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="case-studies.html">Case Studies</a>
-      <a href="skills.html">Skills</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <p class="footer-copy">© 2025 Alex Sharma · Product Manager Portfolio</p>
+    <p class="footer-copy" style="color: #71717a; font-size: 0.8rem;">© 2026 Astha Gupta · Product Manager Portfolio</p>
   </footer>
 
   <script src="../js/main.js"></script>
 </body>
-
 </html>
-<!-- =====================
-     ABOUT SECTION
-     ===================== -->
-<section class="about-section" id="about">
-
-  <!-- Cinematic background -->
-  <div class="about-bg"></div>
-
-  <!-- Dark gradient overlays for readability -->
-  <div class="about-overlay-left"></div>
-  <div class="about-overlay-bottom"></div>
-
-  <div class="about-content">
-
-    <!-- Label badge -->
-    <div class="about-title-card">A B O U T</div>
-
-    <!-- Main heading -->
-    <h2 class="about-heading">HI, I'M ASTHA GUPTA</h2>
-
-    <!-- Bio -->
-    <p class="about-bio">
-      I'm a <strong>fresher Product Manager</strong> with an engineering background and a
-      builder's mindset. I've spent the last year going deep on product thinking —
-      shipping side projects, completing internships, and obsessing over why users
-      do what they do. I don't just study products, I build them.
-      My superpower is sitting at the intersection of <strong>tech and empathy</strong> —
-      translating user problems into clear, scoped solutions that engineers love to build.
-      I'm currently exploring opportunities across <strong>AI, SaaS, and consumer products</strong>
-      where I can grow fast and make real impact from day one.
-    </p>
-
-    <!-- Specialty cards -->
-    <div class="about-visual">
-
-      <div class="visual-card">
-        <svg class="visual-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#E50914" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <div class="visual-title">AI PRODUCTS</div>
-        <div class="visual-desc">Build intelligent solutions from concept to launch.</div>
-      </div>
-
-      <div class="visual-card">
-        <svg class="visual-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="7" height="7" rx="1" stroke="#E50914" stroke-width="2" />
-          <rect x="14" y="3" width="7" height="7" rx="1" stroke="#E50914" stroke-width="2" />
-          <rect x="3" y="14" width="7" height="7" rx="1" stroke="#E50914" stroke-width="2" />
-          <rect x="14" y="14" width="7" height="7" rx="1" stroke="#E50914" stroke-width="2" />
-        </svg>
-        <div class="visual-title">WORKFLOW SYSTEMS</div>
-        <div class="visual-desc">Design seamless pipelines for teams.</div>
-      </div>
-
-      <div class="visual-card">
-        <svg class="visual-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="8" r="4" stroke="#E50914" stroke-width="2" />
-          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#E50914" stroke-width="2" stroke-linecap="round" />
-        </svg>
-        <div class="visual-title">USER EXPERIENCES</div>
-        <div class="visual-desc">Craft engaging UI/UX from 0→1.</div>
-      </div>
-
-      <div class="visual-card">
-        <svg class="visual-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 6L9 17l-5-5" stroke="#E50914" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-        <div class="visual-title">THINKING & EXECUTION</div>
-        <div class="visual-desc">PRDs, prototypes, technical trade-offs.</div>
-      </div>
-
-    </div>
-
-    <!-- Quick stats row -->
-    <div class="about-stats">
-      <div class="about-stat">
-        <span class="stat-num">3+</span>
-        <span class="stat-label">Side Projects Built</span>
-      </div>
-      <div class="about-stat">
-        <span class="stat-num">2</span>
-        <span class="stat-label">Internships Completed</span>
-      </div>
-      <div class="about-stat">
-        <span class="stat-num">∞</span>
-        <span class="stat-label">Curiosity</span>
-      </div>
-    </div>
-
-  </div>
-</section>

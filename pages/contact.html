@@ -3,119 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Alex Sharma · PM</title>
+  <title>Who's Connecting? — Astha Gupta · PM</title>
   <link rel="stylesheet" href="../css/style.css" />
+  
+  <!-- Premium Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #141414;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .full-screen-selector {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- ===== NAVBAR — Netflix style ===== -->
   <nav class="navbar" id="navbar">
-    <div class="nav-logo"><a href="../index.html"><span class="logo-text">ALEX<span class="logo-dot">.</span>PM</span></a></div>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-    <a href="contact.html" class="nav-cta">Hire Me</a>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  </nav>
-
-  <div class="page-header">
-    <div class="about-tag">📬 Let's Talk</div>
-    <h1>Get In Touch</h1>
-    <p>Hiring, collaborating, or just want to talk product? I'm always open to a conversation.</p>
-  </div>
-
-  <div class="contact-layout">
-    <div class="contact-info">
-      <h2>Let's build something great together.</h2>
-      <p>
-        I'm currently open to Senior PM and Group PM roles, particularly in consumer tech, fintech, and AI-native products. I'm also happy to chat about advisory opportunities or speaking engagements.
-      </p>
-      <div class="contact-links">
-        <div class="contact-link-item">
-          <div class="contact-link-icon">📧</div>
-          <div>
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-value">alex.sharma@pm.dev</div>
-          </div>
-        </div>
-        <a href="#" class="contact-link-item">
-          <div class="contact-link-icon">💼</div>
-          <div>
-            <div class="contact-link-label">LinkedIn</div>
-            <div class="contact-link-value">linkedin.com/in/alexsharmapm</div>
-          </div>
-        </a>
-        <a href="#" class="contact-link-item">
-          <div class="contact-link-icon">🐦</div>
-          <div>
-            <div class="contact-link-label">Twitter / X</div>
-            <div class="contact-link-value">@alexsharmapm</div>
-          </div>
-        </a>
-        <a href="#" class="contact-link-item">
-          <div class="contact-link-icon">✍️</div>
-          <div>
-            <div class="contact-link-label">Medium</div>
-            <div class="contact-link-value">medium.com/@alexsharmapm</div>
-          </div>
-        </a>
-        <div class="contact-link-item">
-          <div class="contact-link-icon">📍</div>
-          <div>
-            <div class="contact-link-label">Location</div>
-            <div class="contact-link-value">New Delhi, India · Open to Remote</div>
-          </div>
-        </div>
+    <div class="nav-left">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-wordmark">ASTHA</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="nav-icon-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-icon-btn nav-notify" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <span class="notify-dot"></span>
+      </button>
+      <div class="nav-profile">
+        <img src="../images/profile.jpg" alt="Profile" class="nav-avatar" />
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="nav-caret"><path d="M7 10l5 5 5-5z"/></svg>
       </div>
     </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
 
-    <div>
-      <form class="contact-form" id="contactForm">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Jane Recruiter" required />
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="jane@company.com" required />
-        </div>
-        <div class="form-group">
-          <label>Company / Organization</label>
-          <input type="text" placeholder="Acme Corp" />
-        </div>
-        <div class="form-group">
-          <label>What's This About?</label>
-          <select>
-            <option>Job Opportunity</option>
-            <option>Collaboration / Advisory</option>
-            <option>Speaking Engagement</option>
-            <option>Just Saying Hi</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell me about the role, the company, or just say hello..."></textarea>
-        </div>
-        <button type="submit" class="form-submit">▶ &nbsp;Send Message</button>
-      </form>
+  <!-- Centered Who's Connecting Panel -->
+  <div class="full-screen-selector">
+    <div class="contact-profile-selector" style="margin: 0;">
+      <h2 class="profile-selector-title">Who's Connecting?</h2>
+      <p class="profile-selector-subtitle" style="margin-bottom: 45px;">Select a profile card below to reach Astha or download her credentials.</p>
+      
+      <div class="profile-grid">
+        <!-- LinkedIn Profile -->
+        <a href="https://www.linkedin.com/in/astha-gupta-6756b9251/" target="_blank" class="profile-card-link">
+          <div class="profile-avatar-wrapper" style="--profile-color: #0077b5;">
+            <div class="profile-avatar linkedin-avatar">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 55px; height: 55px;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </div>
+            <span class="profile-name">LinkedIn</span>
+          </div>
+        </a>
+
+        <!-- Email Profile -->
+        <a href="mailto:asthagupta0204@gmail.com" class="profile-card-link">
+          <div class="profile-avatar-wrapper" style="--profile-color: #e50914;">
+            <div class="profile-avatar email-avatar">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 55px; height: 55px;"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 4.156v-8.314l4.623 4.158zm.945.851l4.432 3.987c.22.198.497.297.773.297s.553-.099.773-.297l4.432-3.987 6.066 6.066h-22.542l6.066-6.066zm10.749-.851l4.683-4.215v8.43l-4.683-4.215zm-5.749-2.029l-11.238-8.901h22.476l-11.238 8.901z"/></svg>
+            </div>
+            <span class="profile-name">Email</span>
+          </div>
+        </a>
+
+        <!-- GitHub Profile -->
+        <a href="https://github.com/asthagit-ux" target="_blank" class="profile-card-link">
+          <div class="profile-avatar-wrapper" style="--profile-color: #71717a;">
+            <div class="profile-avatar github-avatar">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 55px; height: 55px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <span class="profile-name">GitHub</span>
+          </div>
+        </a>
+
+        <!-- Resume Profile -->
+        <a href="../assets/Astha_Gupta_Resume.pdf" download="Astha_Gupta_Resume.pdf" class="profile-card-link">
+          <div class="profile-avatar-wrapper" style="--profile-color: #46d369;">
+            <div class="profile-avatar resume-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="padding: 10px; width: 60px; height: 60px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </div>
+            <span class="profile-name">Resume</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Manage Profiles Call-To-Action (Primary Resume PDF Access) -->
+      <div class="manage-profiles-container">
+        <a href="../assets/Astha_Gupta_Resume.pdf" download="Astha_Gupta_Resume.pdf" class="btn-manage-profiles">
+          Manage Profiles
+        </a>
+      </div>
     </div>
   </div>
 
-  <footer class="site-footer">
-    <div class="footer-logo">ALEX<span class="logo-dot">.</span>PM</div>
-    <div class="footer-links">
-      <a href="../index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="case-studies.html">Case Studies</a>
-      <a href="skills.html">Skills</a>
-      <a href="contact.html">Contact</a>
+  <!-- Footer -->
+  <footer class="site-footer" style="padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; background: #0f0f10;">
+    <div class="footer-logo" style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 1px; color: #e50914; margin-bottom: 20px;">ASTHA</div>
+    <div class="footer-links" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+      <a href="../index.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Home</a>
+      <a href="about.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">About</a>
+      <a href="case-studies.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Case Studies</a>
+      <a href="skills.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Skills</a>
+      <a href="contact.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.88rem;">Contact</a>
     </div>
-    <p class="footer-copy">© 2025 Alex Sharma · Product Manager Portfolio</p>
+    <p class="footer-copy" style="color: #71717a; font-size: 0.8rem;">© 2026 Astha Gupta · Product Manager Portfolio</p>
   </footer>
 
   <script src="../js/main.js"></script>
