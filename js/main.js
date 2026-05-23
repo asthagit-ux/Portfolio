@@ -909,6 +909,8 @@ const modalTags = document.getElementById('modalTags');
 const modalMetrics = document.getElementById('modalMetrics');
 const modalHeroBanner = document.querySelector('.modal-hero-banner');
 
+const modalBadge = document.getElementById('modalBadge');
+
 function openModal(csKey) {
   const data = caseStudiesData[csKey];
   if (!data || !modal) return;
@@ -923,6 +925,22 @@ function openModal(csKey) {
   modalRole.textContent = data.role;
   modalSkills.textContent = data.skills;
   modalTags.textContent = data.tags;
+
+  // Set badge label — concept teardowns vs real shipped work
+  const conceptKeys = ["global-onboarding", "india-localization", "async-collaboration", "shark-tank-invest"];
+  if (modalBadge) {
+    if (conceptKeys.includes(csKey)) {
+      modalBadge.textContent = "CONCEPT TEARDOWN";
+      modalBadge.style.background = "rgba(245, 158, 11, 0.12)";
+      modalBadge.style.color = "#f59e0b";
+      modalBadge.style.border = "1px solid rgba(245, 158, 11, 0.3)";
+    } else {
+      modalBadge.textContent = "SHIPPED PRODUCT";
+      modalBadge.style.background = "";
+      modalBadge.style.color = "";
+      modalBadge.style.border = "";
+    }
+  }
 
   // Set Hero background style dynamically
   if (modalHeroBanner) {
@@ -957,7 +975,7 @@ function openModal(csKey) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
         </button>
       `;
-    } else if (["global-onboarding", "india-localization", "collaboration-workspace", "shark-tank-invest"].includes(csKey)) {
+    } else if (["global-onboarding", "india-localization", "async-collaboration", "shark-tank-invest"].includes(csKey)) {
       modalCtaRow.innerHTML = `
         <a href="pages/case-studies.html" class="btn-play modal-main-cta" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
           <svg viewBox="0 0 24 24" fill="currentColor" class="play-icon" style="width: 20px; height: 20px;"><polygon points="6,4 20,12 6,20"/></svg>
