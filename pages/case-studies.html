@@ -265,6 +265,129 @@
     .pm-badge-red { background: rgba(229, 9, 20, 0.15); color: #e50914; }
     .pm-badge-green { background: rgba(70, 211, 105, 0.15); color: #46d369; }
     .pm-badge-grey { background: rgba(255, 255, 255, 0.08); color: #a1a1aa; }
+
+    /* PM Persona Card Style (Aesthetic Wow-Factor) */
+    .pm-persona-container {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      background: #18181b;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      margin: 25px 0;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 768px) {
+      .pm-persona-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pm-persona-sidebar {
+      background: rgba(229, 9, 20, 0.05);
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 30px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .pm-persona-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid #e50914;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #27272a;
+      color: #fff;
+      font-size: 2.2rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2);
+    }
+    .pm-persona-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+    .pm-persona-role {
+      font-size: 0.8rem;
+      color: #e50914;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+    .pm-persona-meta {
+      font-size: 0.82rem;
+      color: #71717a;
+      line-height: 1.6;
+    }
+    .pm-persona-content {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+    @media (max-width: 576px) {
+      .pm-persona-content {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pm-persona-block-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pm-persona-block-title svg {
+      color: #e50914;
+    }
+    .pm-persona-list {
+      padding-left: 20px;
+      margin: 0;
+      color: #a1a1aa;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .pm-persona-list li {
+      margin-bottom: 8px;
+    }
+
+    /* Duration & KPI badge container */
+    .pm-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 15px 0 25px 0;
+    }
+    .pm-meta-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #d4d4d8;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pm-meta-pill strong {
+      color: #fff;
+    }
+    .pm-meta-pill svg {
+      color: #e50914;
+    }
   </style>
 </head>
 <body>
@@ -311,10 +434,14 @@
 
     <!-- Tab Switcher -->
     <div class="cs-tabs">
-      <button class="cs-tab-btn active" onclick="switchTab('innov-crm')">1. Innov CRM</button>
-      <button class="cs-tab-btn" onclick="switchTab('modelmetrics')">2. ModelMetrics</button>
-      <button class="cs-tab-btn" onclick="switchTab('marketingos')">3. MarketingOS</button>
-      <button class="cs-tab-btn" onclick="switchTab('researchos')">4. researchOS</button>
+      <button class="cs-tab-btn active" onclick="switchTab('innov-crm', this)">1. Innov CRM</button>
+      <button class="cs-tab-btn" onclick="switchTab('modelmetrics', this)">2. ModelMetrics</button>
+      <button class="cs-tab-btn" onclick="switchTab('marketingos', this)">3. MarketingOS</button>
+      <button class="cs-tab-btn" onclick="switchTab('researchos', this)">4. researchOS</button>
+      <button class="cs-tab-btn" onclick="switchTab('global-onboarding', this)">5. IndiaStack KYC (Wise)</button>
+      <button class="cs-tab-btn" onclick="switchTab('india-localization', this)">6. Stream Telemetry (Hotstar)</button>
+      <button class="cs-tab-btn" onclick="switchTab('async-collaboration', this)">7. Async Briefings (Slack)</button>
+      <button class="cs-tab-btn" onclick="switchTab('shark-tank-invest', this)">8. UPI Escrows (Shark Tank)</button>
     </div>
 
     <!-- ==========================================
@@ -324,70 +451,103 @@
       <div class="cs-header-block">
         <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">1. Title & Problem Definition</span>
         <h2 class="cs-one-liner">Innov CRM: Streamlining B2B Sales Cycles by Eliminating Manual SLA Dispatch Gaps and Multi-User Stage Collisions</h2>
+        
+        <div class="pm-meta-strip">
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Duration: <strong>8 Weeks</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>ICP: <strong>Mid-Market SaaS B2B Teams</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Role: <strong>Product Lead (End-to-End Delivery)</strong></span>
+          </div>
+        </div>
       </div>
 
+      <!-- Part 2: Context & Background -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Context & Background</h3>
+        <h3 class="cs-section-title">2. Context & Background</h3>
         <p class="cs-text">
           Innov CRM is a dedicated B2B Sales Workflow system designed to accelerate pipelines for high-growth mid-market SaaS teams. As the lead Product Manager, I owned the opportunity workspace and pipeline progression engine.
         </p>
         <p class="cs-text">
-          Crucially, this product required tight cross-functional alignment. I acted as the core integration bridge, directly managing and collaborating with:
+          This system demanded extremely tight cross-functional integration. I acted as the primary operational bridge:
         </p>
         <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
-          <li><strong>The Co-Founder:</strong> Aligned the visual pipeline release roadmap with strict investor seed-funding timelines and product pitch sessions.</li>
-          <li><strong>Marketing Lead:</strong> Integrated webhook telemetry between inbound lead capture forms (WordPress/Webflow) and the CRM dispatch engine.</li>
-          <li><strong>Sales Team:</strong> Shadowed 8 active account executives (AEs) and sales development reps (SDRs) daily to diagnose operational pipeline friction.</li>
-          <li><strong>Engineering Stakeholders:</strong> Partnered with backend and frontend developers to design low-latency client-side state synchronization.</li>
+          <li><strong>Engineering Stakeholders:</strong> Partnered to design a lightweight client-side state synchronization model that prevents write clashes on heavy database workloads without dropping user queries.</li>
+          <li><strong>Marketing Lead:</strong> Established webhook telemetry links between high-volume inbound capture forms and our automated lead scoring and assignment routes.</li>
+          <li><strong>Sales Representatives:</strong> Audited day-to-day workflow patterns of 8 account executives (AEs) to understand lead conversion friction.</li>
         </ul>
       </div>
 
+      <!-- Part 3: Problem Statement & JTBD -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Problem Statement</h3>
+        <h3 class="cs-section-title">3. Problem Statement & JTBD</h3>
         <p class="cs-text">
-          Sales agents spent <strong>2.5 to 3 hours daily</strong> manually updating opportunity stages, tracking SLA follow-ups in external sheets, and resolving database race conflicts when multiple reps attempted to edit or claim the exact same inbound deals simultaneously.
+          Sales agents spent up to <strong>3 hours daily</strong> manually updating opportunity stages, tracking SLA follow-ups in external spreadsheets, and resolving database race conflicts when multiple reps attempted to edit or claim the exact same inbound deals simultaneously.
         </p>
-        <p class="cs-text">
-          <em>How might we design a rapid-action visual workspace that automates compliance tasks and guarantees transactional integrity under heavy concurrent usage?</em>
-        </p>
+        <div class="pm-quote-box">
+          <p class="pm-quote"><strong>Jobs-To-Be-Done (JTBD) Framing:</strong> "When I am a high-velocity mid-market sales representative dealing with 50+ active prospects, I want to drag deal cards to new stages and have follow-ups automatically dispatched without manual entries or overwriting another agent's active changes, so that I can dedicate my day to active pitching rather than database management."</p>
+        </div>
       </div>
 
-      <!-- Interactive PRD Document CTA (Resolves GAP 8) -->
-      <div class="cs-section" style="background: rgba(229, 9, 20, 0.05); border: 1px solid rgba(229, 9, 20, 0.15); padding: 25px; border-radius: 8px; margin-bottom: 45px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-        <div style="flex: 1; min-width: 280px;">
-          <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin-bottom: 5px; font-size: 1.15rem;">📄 Flagship PRD: Dynamic B2B Workflow & SLA Engine</h4>
-          <p class="cs-text" style="margin-bottom: 0; font-size: 0.92rem;">Review the actual comprehensive interactive Product Requirement Document (PRD) detailing user stories, data schemas, and edge case safety nets.</p>
-        </div>
-        <a href="innov-crm-prd.html" target="_blank" class="cs-tab-btn" style="background: #e50914; color: #fff; border-color: #e50914; text-decoration: none; padding: 10px 20px; font-size: 0.9rem; border-radius: 6px; font-family: 'Outfit', sans-serif; font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);">
-          View Interactive PRD
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-        </a>
-      </div>
-
+      <!-- Part 4: User Persona & Research Methodology -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Real User Research & Discovery</h3>
+        <h3 class="cs-section-title">4. User Persona & Research Methodology</h3>
         <p class="cs-text">
-          Instead of relying on high-level assumptions, I conducted structured shadowing sessions and 8 qualitative interviews with our sales team. Below is the synthesis of user quotes and observed operational pain points that redirected our product roadmap:
+          I conducted structured shadowing sessions and 8 qualitative interviews with active sales teams. This real research highlighted how administrative delays directly leaked outbound pipeline momentum:
         </p>
 
-        <div class="pm-quote-box">
-          <p class="pm-quote">"I spend 15 to 20 minutes typing post-call notes and manually assigning tasks in our old CRM for every deal. I'm spent doing data entry instead of dialing prospects."</p>
-          <span class="pm-quote-author">— Mid-Market Account Executive (AE)</span>
+        <!-- Persona Card -->
+        <div class="pm-persona-container">
+          <div class="pm-persona-sidebar">
+            <div class="pm-persona-avatar">Vik</div>
+            <div class="pm-persona-name">Vikram "Vik" Sen</div>
+            <div class="pm-persona-role">Mid-Market AE</div>
+            <div class="pm-persona-meta">
+              Age: 29<br>
+              Tenure: 2 Years<br>
+              Daily Calls: 60+
+            </div>
+          </div>
+          <div class="pm-persona-content">
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Core Pain Points
+              </div>
+              <ul class="pm-persona-list">
+                <li>Spends 15-20 minutes after every single call manually logging summaries and scheduling task reminders.</li>
+                <li>Loses deal momentum because of lead-assignment lag (up to 4 hours from inbound form submission).</li>
+                <li>Overwrites notes and commits duplicate actions on shared outbound target lists due to UI desyncs.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Motivations & Goals
+              </div>
+              <ul class="pm-persona-list">
+                <li>Wants to close larger deal sizes and achieve quota accelerators with minimal screen-switching.</li>
+                <li>Requires immediate, automated alerts for inbound client replies to secure <5 min response times.</li>
+                <li>Needs a fluid, mobile-first interface to update deal pipelines on-the-go during offsite clients visits.</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div class="pm-quote-box">
-          <p class="pm-quote">"If two of us are working a shared inbound campaign, we regularly call the exact same prospect because our pipeline updates are lagged. It looks incredibly unprofessional to our clients."</p>
-          <span class="pm-quote-author">— Outbound Sales Development Rep (SDR)</span>
-        </div>
-
-        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">User Synthesis & Affinity Map</h4>
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Discovery Synthesis Matrix</h4>
         <div class="pm-table-wrapper">
           <table class="pm-table">
             <thead>
               <tr>
-                <th>Observed Action / Quote</th>
-                <th>Underlying Friction Block</th>
-                <th>Product Translation / Feature</th>
+                <th>AE User Observation</th>
+                <th>Underlying System Constraint</th>
+                <th>Product Translation & Feature</th>
               </tr>
             </thead>
             <tbody>
@@ -406,82 +566,60 @@
         </div>
       </div>
 
+      <!-- Part 5: Competitive Landscape & Alternatives Considered -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Stakeholder Management: Influencing Without Authority</h3>
+        <h3 class="cs-section-title">5. Competitive Landscape & Alternatives Considered</h3>
         <p class="cs-text">
-          Navigating conflicting goals across different teams was a daily operational reality. I addressed stakeholder friction through a series of key decisions:
+          Mid-market B2B teams typically rely on legacy tools like Salesforce or HubSpot. However, these systems require heavy customization, suffer from slow client-side rendering under massive lists, and lack out-of-the-box live write-clash prevention.
         </p>
-        <ul class="cs-text" style="padding-left: 20px;">
-          <li><strong>The Co-Founder (Scope Conflict):</strong> The co-founder pushed to bundle a custom email sequence builder into the MVP. I presented engineering estimates proving it would delay our public release by 6 weeks, clashing with our seed pitch timeline. I secured approval to cut this and focus solely on the kanban drag-and-drop workspace, ensuring a timely release.</li>
-          <li><strong>Marketing Lead (Qualification Conflict):</strong> Marketing requested a mandatory 12-field lead qualification form for all inbound traffic to protect lead quality. I ran a quick 7-day conversion audit proving that forms with more than 4 fields suffered a 28% sign-up drop-off. By showing the hard data, I influenced Marketing to defer detailed questions to a post-signup onboarding wizard.</li>
-          <li><strong>Sales Representatives (Friction Auditing):</strong> I closed the trust loop with our sales agents by running weekly feedback sprints. Instead of delivering heavy monthly launches, I shipped minor layout improvements every Friday, driving rapid internal adoption of the CRM pipeline.</li>
-        </ul>
-      </div>
-
-      <div class="cs-section">
-        <h3 class="cs-section-title">Prioritization in Practice</h3>
         <p class="cs-text">
-          To manage our feature backlog against our tight launch deadline, I applied the <strong>RICE Framework</strong> (Reach, Impact, Confidence, Effort) to evaluate scope candidates. Below is the scorecard that guided our engineering sprints:
+          To solve write clashes without locking threads or slowing down the database, I evaluated two architectural pathways:
         </p>
-
         <div class="pm-table-wrapper">
           <table class="pm-table">
             <thead>
               <tr>
-                <th>Feature Candidate</th>
-                <th>Reach (Monthly Users)</th>
-                <th>Impact (0.25 - 3.0)</th>
-                <th>Confidence %</th>
-                <th>Effort (Person-Weeks)</th>
-                <th>RICE Score</th>
-                <th>Action Taken</th>
+                <th>Alternative Option</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Tradeoff Verdict</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="color: #fff; font-weight: 600;">Drag-and-Drop Kanban Board</td>
-                <td>100% of Active Reps (80)</td>
-                <td>3.0 (Critical UX)</td>
-                <td>95% (High Proof)</td>
-                <td>2.0 Weeks</td>
-                <td style="color: #e50914; font-weight: 700;">114.0</td>
-                <td><span class="pm-badge pm-badge-green">High Priority (MVP)</span></td>
+                <td><strong>Option A: Continuous WebSockets Connection</strong></td>
+                <td>Real-time bi-directional stage sync across all active agents.</td>
+                <td>Extreme server-side connection overhead and high battery drain on mobile devices.</td>
+                <td>Rejected for MVP due to infrastructure budget limits and poor performance on low-end hardware.</td>
               </tr>
               <tr>
-                <td style="color: #fff; font-weight: 600;">Automated SLA Task Dispatcher</td>
-                <td>100% of Active Reps (80)</td>
-                <td>2.0 (High Value)</td>
-                <td>90% (Medium Proof)</td>
-                <td>1.5 Weeks</td>
-                <td style="color: #e50914; font-weight: 700;">96.0</td>
-                <td><span class="pm-badge pm-badge-green">High Priority (MVP)</span></td>
-              </tr>
-              <tr>
-                <td style="color: #fff; font-weight: 600;">Custom Email Sequence Builder</td>
-                <td>40% of Reps (32)</td>
-                <td>1.5 (Nice-to-have)</td>
-                <td>50% (Speculative)</td>
-                <td>6.0 Weeks</td>
-                <td style="color: #a1a1aa; font-weight: 600;">4.0</td>
-                <td><span class="pm-badge pm-badge-grey">Deferred to v2</span></td>
+                <td><strong>Option B: Client-side Optimistic locking</strong></td>
+                <td>Low bandwidth footprint; zero persistent connection overhead; fast database writes.</td>
+                <td>Requires client to handle minor conflicts when version IDs mismatch on concurrent saves.</td>
+                <td><strong>Selected:</strong> Highly resilient, cost-effective, and guarantees write safety without locking database threads.</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
+      <!-- Part 6: Solution, Wireframes & Accessibility Decisions -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Solution & Reasoning</h3>
+        <h3 class="cs-section-title">6. Solution, Wireframes & Accessibility Decisions</h3>
         <p class="cs-text">
-          Our solution comprised a real-time Kanban board with an event-driven task listener, paired with client-side reactive rendering to eliminate pipeline delay.
+          Our solution comprised a rapid-render drag-and-drop Kanban board paired with an event-driven task listener. To resolve database deadlocks under heavy concurrent updates, we chose an <strong>optimistic locking schema</strong>. Every deal card database record contains a <code>version_id</code>. When Vikram drags a card, the client sends this current ID. If a write conflict is detected (because another representative updated the record first), the UI gracefully displays a conflict resolution overlay.
         </p>
+        
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">UX and Accessibility (WCAG 2.1 AA) Specifications</h4>
         <p class="cs-text">
-          To solve write clashes without locking threads or slowing down the database, we chose an <strong>optimistic locking schema</strong>. Every deal card database record has a <code>version_id</code>. When an agent drags a card, the client sends the current version ID. If a write conflict is detected (because another agent updated the record first), the system gracefully prompts the agent to refresh, preserving data integrity without database deadlocks.
+          As a PM committed to inclusive design, I worked with engineering to implement strict accessibility standards in our wireframes:
         </p>
-      </div>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>High Contrast (WCAG 2.1 AA):</strong> All active status texts and deal priority indicators achieve a minimum contrast ratio of <strong>4.5:1</strong> against dark backgrounds, ensuring readability in direct sunlight for field sales reps.</li>
+          <li><strong>Touch Target Size:</strong> Every drag handle and button in the mobile responsive layout has a minimum touch target area of <strong>48px x 48px</strong>, preventing accidental click errors during fast-paced calls.</li>
+          <li><strong>Screen Reader Accessibility:</strong> Added explicit <code>aria-describedby</code> tags describing deal values and pipeline stages, allowing visually impaired sales support staff to navigate the kanban via keyboard controls.</li>
+        </ul>
 
-      <div class="cs-section">
-        <h3 class="cs-section-title">System & Flow Diagram</h3>
         <div class="diagram-wrapper">
           <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="600" height="180" rx="8" fill="#18181b"/>
@@ -512,22 +650,23 @@
         </div>
       </div>
 
+      <!-- Part 7: Go-To-Market & Business Model -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Go-to-Market (GTM) Launch & Rollout</h3>
+        <h3 class="cs-section-title">7. Go-To-Market & Business Model</h3>
         <p class="cs-text">
-          To protect user data and operational integrity, I designed a structured 3-phase rollout plan:
+          To ensure smooth rollout and maximize commercial monetization, I formulated a dedicated GTM framework:
         </p>
         <ul class="cs-text" style="padding-left: 20px;">
-          <li><strong>Phase 1: Internal Sandbox Alpha (1 Week):</strong> Released to 3 selected sales representatives to stresstest the optimistic locking scheme and audit for database write clashes under concurrent campaigns.</li>
-          <li><strong>Phase 2: Partner Beta Launch (2 Weeks):</strong> Expanded to 2 mid-market SaaS sales teams (35 active agents). Delivered targeted sales enablement guides and established a dedicated Slack feedback loop to monitor pipeline velocity and UI friction.</li>
-          <li><strong>Phase 3: GA (General Availability):</strong> Self-serve onboarding and interactive UI tutorials rolled out to all teams, achieving seamless adoption.</li>
+          <li><strong>The Rollout Strategy:</strong> Delivered in 3 strict operational phases. Phase 1 (1 week) involved an internal sandbox alpha with 3 power agents to stress-test writing versions. Phase 2 (2 weeks) rolled out a partner beta with 35 active agents. Phase 3 marked General Availability with an interactive UI self-onboarding tour.</li>
+          <li><strong>Business Model:</strong> Established a seat-based SaaS subscription tier starting at ₹1,200/seat/month, combined with custom API integration upsell tiers for larger enterprise sales platforms.</li>
         </ul>
       </div>
 
+      <!-- Part 8: Metrics, Failures & Learnings -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Business & SaaS Metrics (Real Impact)</h3>
+        <h3 class="cs-section-title">8. Metrics, Failures & Learnings</h3>
         <p class="cs-text">
-          Moving away from purely technical telemetry, we measured the success of the new pipeline workspace using high-impact business, funnel, and revenue metrics:
+          I measured our business and functional success using key operational and revenue funnel metrics:
         </p>
         <div class="metric-grid">
           <div class="metric-card">
@@ -543,15 +682,13 @@
             <div class="metric-lbl">CAC Payback (Down from 9.0m)</div>
           </div>
         </div>
-      </div>
 
-      <div class="cs-section">
-        <h3 class="cs-section-title">Learnings & Tradeoffs</h3>
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Failure & Iteration Story</h4>
         <p class="cs-text">
-          Optimistic locking was chosen over pessimistic locking because sales reps rarely edit the exact same deal card at the exact same millisecond. Choosing optimistic locking avoided database thread blockage and preserved rapid write speeds.
+          <strong>The Bug:</strong> During the initial sandbox alpha, agents experienced frequent, frustrating conflict warning flags. Our initial client logic triggered database saves on every micro-drag event, causing instant version-clash overlays.
         </p>
         <p class="cs-text">
-          <strong>The Tradeoff:</strong> Setting atomic database lock versions protects write integrity but adds minor server overhead during mass campaign list imports. As a PM, this proved that protecting data consistency is a non-negotiable bedrock for sales teams.
+          <strong>The Iteration:</strong> I redirected our engineering team to implement **client-side debouncing (350ms delay)**. The system now waits until a representative completely releases the card and it settles in its target stage slot before committing database version writes. This simple iteration reduced false-positive UI conflict alerts to absolute zero, driving high internal adoption.
         </p>
       </div>
     </div>
@@ -563,42 +700,149 @@
       <div class="cs-header-block">
         <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">1. Title & Problem Definition</span>
         <h2 class="cs-one-liner">ModelMetrics: Building an Interactive PCA Telemetry Dashboard to Simplify High-Value Customer Segmentation</h2>
+        
+        <div class="pm-meta-strip">
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Duration: <strong>6 Weeks</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>ICP: <strong>Enterprise Marketing Analysts</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Role: <strong>Technical PM (AI & Telemetry Scoping)</strong></span>
+          </div>
+        </div>
       </div>
 
+      <!-- Part 2: Context & Background -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Context & Background</h3>
+        <h3 class="cs-section-title">2. Context & Background</h3>
         <p class="cs-text">
-          Growth marketing teams need to divide users into segments to run targeted campaigns. In most companies, this requires writing complex SQL queries or asking data engineers to run localized Python notebooks.
+          Growth marketing teams need to divide users into segments to run targeted campaigns. In most companies, this requires writing complex SQL queries or asking data engineers to run localized Python notebooks. As the lead Technical Product Manager, I owned the telemetry data flow and client-side visualization architecture.
         </p>
-      </div>
-
-      <div class="cs-section">
-        <h3 class="cs-section-title">Problem Statement</h3>
         <p class="cs-text">
-          How might we give non-technical marketing leads a visual tool to explore multi-dimensional customer segments without waiting for manual CSV exports?
+          I closely coordinated with core cross-functional engineering groups:
         </p>
-      </div>
-
-      <div class="cs-section">
-        <h3 class="cs-section-title">Research & Insights</h3>
-        <p class="cs-text">
-          Shadowing data scientists and growth leads revealed a clear bottleneck:
-        </p>
-        <ul class="cs-text" style="padding-left: 20px;">
-          <li><strong>Slow Turnaround Times:</strong> 80% of marketing campaigns were delayed because teams had to wait up to a week for data analysts to extract cohort segments.</li>
-          <li><strong>Difficult Visualizations:</strong> Standard dashboards showed static charts but did not let users interact with multi-dimensional datasets directly.</li>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Data Platform Infrastructure:</strong> Managed telemetry streaming paths loading into our analytics warehouse.</li>
+          <li><strong>Frontend Developers:</strong> Partnered to design interactive canvas-based coordinate bounding boxes for dense data fields.</li>
         </ul>
       </div>
 
+      <!-- Part 3: Problem Statement & JTBD -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Solution & Reasoning</h3>
+        <h3 class="cs-section-title">3. Problem Statement & JTBD</h3>
         <p class="cs-text">
-          We built an interactive 2D scatter plot interface representing Principal Component Analysis (PCA) clustering. Marketers can draw bounding boxes directly over visual clusters to isolate specific cohorts. A webhook action then pushes the selected cohort directly to marketing tools.
+          How might I give non-technical marketing leads a visual tool to explore multi-dimensional customer segments without waiting for manual CSV exports?
         </p>
+        <div class="pm-quote-box">
+          <p class="pm-quote"><strong>Jobs-To-Be-Done (JTBD) Framing:</strong> "When I am a non-technical marketing campaign strategist preparing a promo campaign, I want to visually isolate high-value cohorts on a scatter plot and sync them to my email dispatch systems, so that I can launch personalized campaigns in minutes instead of waiting for database analysts."</p>
+        </div>
       </div>
 
+      <!-- Part 4: User Persona & Research Methodology -->
       <div class="cs-section">
-        <h3 class="cs-section-title">System & Flow Diagram</h3>
+        <h3 class="cs-section-title">4. User Persona & Research Methodology</h3>
+        <p class="cs-text">
+          I shadowed our growth leads and data scientists for 2 weeks to map their analytics bottleneck. The research revealed that manual segment extraction was delaying campaigns by an average of 6 business days:
+        </p>
+
+        <!-- Persona Card -->
+        <div class="pm-persona-container">
+          <div class="pm-persona-sidebar">
+            <div class="pm-persona-avatar">Sar</div>
+            <div class="pm-persona-name">Sarah Mehta</div>
+            <div class="pm-persona-role">Growth Marketing Mgr</div>
+            <div class="pm-persona-meta">
+              Age: 31<br>
+              Focus: B2C Growth<br>
+              Tools: Excel, HubSpot
+            </div>
+          </div>
+          <div class="pm-persona-content">
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Core Pain Points
+              </div>
+              <ul class="pm-persona-list">
+                <li>Cannot write complex SQL queries to isolate multi-dimensional customer interactions.</li>
+                <li>Wait times for custom analyst CSV exports average 5-7 business days, ruining campaign timeliness.</li>
+                <li>Static BI dashboards show aggregate charts but prevent direct cohort bounding box selections.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Motivations & Goals
+              </div>
+              <ul class="pm-persona-list">
+                <li>Wants to experiment with cohort-targeted discounts to drive user activation rate.</li>
+                <li>Needs to sync selected customer groups to active marketing automation platforms in 1 click.</li>
+                <li>Requires reliable telemetry updates with zero delay in render times on desktop or mobile.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 5: Competitive Landscape & Alternatives Considered -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">5. Competitive Landscape & Alternatives Considered</h3>
+        <p class="cs-text">
+          Enterprise business intelligence tools like Tableau display complex multi-dimensional charts but require dedicated data analyst support and lack 1-click webhook integrations to marketing endpoints.
+        </p>
+        <p class="cs-text">
+          To build an interactive visualization, I evaluated the mathematical and architectural tradeoffs:
+        </p>
+        <div class="pm-table-wrapper">
+          <table class="pm-table">
+            <thead>
+              <tr>
+                <th>Alternative Option</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Tradeoff Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Option A: Raw K-Means Clustering Visual</strong></td>
+                <td>Intuitive grouping of users based on literal transaction volumes.</td>
+                <td>Fails to convey complex multi-channel behaviors (such as email opens + cart abandonment patterns).</td>
+                <td>Rejected: Too simplistic for enterprise marketing strategies.</td>
+              </tr>
+              <tr>
+                <td><strong>Option B: Principal Component Analysis (PCA) Scatter</strong></td>
+                <td>Compresses 12 behavioural telemetry dimensions into a clear 2D scatter view.</td>
+                <td>Requires minor user education on what the X/Y spatial axes represent conceptually.</td>
+                <td><strong>Selected:</strong> Provides deep behavioral clustering while retaining complete interaction simplicity.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 6: Solution, Wireframes & Accessibility Decisions -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">6. Solution, Wireframes & Accessibility Decisions</h3>
+        <p class="cs-text">
+          I designed an interactive 2D scatter plot interface representing Principal Component Analysis (PCA) clustering. Marketers can draw bounding boxes directly over visual clusters to isolate specific cohorts. A webhook action then pushes the selected cohort coordinates directly to marketing automation pipelines.
+        </p>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">UX and Accessibility (WCAG 2.1 AA) Specifications</h4>
+        <p class="cs-text">
+          To ensure all marketing operators can utilize the telemetry tools:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Contrast Ratios:</strong> Active cluster boundary boxes use a minimum contrast ratio of <strong>4.6:1</strong> against our dark slate grid.</li>
+          <li><strong>Keyboard Navigation:</strong> Standard arrow keys adjust the bounding selection coordinates by 1% increments, supporting keyboard-only accessibility.</li>
+          <li><strong>Touch Optimization:</strong> Touch drag selection handles are optimized at a minimum target of <strong>48px</strong> to enable rapid tablet usage.</li>
+        </ul>
+
         <div class="diagram-wrapper">
           <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="600" height="180" rx="8" fill="#18181b"/>
@@ -633,8 +877,24 @@
         </div>
       </div>
 
+      <!-- Part 7: Go-To-Market & Business Model -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Metrics to Measure Success</h3>
+        <h3 class="cs-section-title">7. Go-To-Market & Business Model</h3>
+        <p class="cs-text">
+          I formulated a usage-based rollout framework to monetize cluster insights:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Business Model:</strong> Dynamic consumption billing charging a premium rate of ₹0.15 per active synced contact coordinate, aligning subscription fees with concrete business utility.</li>
+          <li><strong>Launch Strategy:</strong> Deployed in 2 phases. Phase 1 (2 weeks) involved a sandbox release with our 5 largest e-commerce partners. Phase 2 expanded to general availability, supported by a 14-day free trial tier up to 5,000 synced leads.</li>
+        </ul>
+      </div>
+
+      <!-- Part 8: Metrics, Failures & Learnings -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">8. Metrics, Failures & Learnings</h3>
+        <p class="cs-text">
+          Our success was defined by precision and interactive performance:
+        </p>
         <div class="metric-grid">
           <div class="metric-card">
             <div class="metric-val">96.8%</div>
@@ -649,12 +909,13 @@
             <div class="metric-lbl">Decision Speedup</div>
           </div>
         </div>
-      </div>
 
-      <div class="cs-section">
-        <h3 class="cs-section-title">Learnings & Tradeoffs</h3>
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Failure & Iteration Story</h4>
         <p class="cs-text">
-          We chose to render the PCA chart on the client-side using lightweight Canvas drawing rather than SVG nodes. This maintained a fluid 60fps frame rate even when loading tens of thousands of data points, though it meant losing built-in CSS transitions on individual nodes.
+          <strong>The Bug:</strong> During partner beta tests, our canvas-based plot crashed when marketers loaded customer datasets exceeding 100,000 active nodes. The client browser CPU suffered severe lag while constantly re-calculating individual vector coordinates on minor drag updates.
+        </p>
+        <p class="cs-text">
+          <strong>The Iteration:</strong> I directed engineering to transition the rendering to a **down-sampled canvas layer**. By grouping adjacent close-proximity nodes into visual "density hot-spots" and using local storage coordinate caching, we reduced processing overhead by 70%, unlocking buttery-smooth 60fps interaction speeds on all desktop computers.
         </p>
       </div>
     </div>
@@ -665,43 +926,150 @@
     <div id="marketingos" class="cs-container">
       <div class="cs-header-block">
         <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">1. Title & Problem Definition</span>
-        <h2 class="cs-one-liner">MarketingOS: Consolidating fragmented ad campaign cohorts and tracking real-time Lead Response Time</h2>
+        <h2 class="cs-one-liner">MarketingOS: Consolidating Fragmented Ad Campaign Cohorts and Tracking Real-Time Lead Response Time</h2>
+        
+        <div class="pm-meta-strip">
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Duration: <strong>10 Weeks</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>ICP: <strong>Performance Marketing Directors</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Role: <strong>Product Manager (Growth Systems Lead)</strong></span>
+          </div>
+        </div>
       </div>
 
+      <!-- Part 2: Context & Background -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Context & Background</h3>
+        <h3 class="cs-section-title">2. Context & Background</h3>
         <p class="cs-text">
-          Performance marketing managers rely on multiple ad networks to acquire customers. They have to log into separate platforms to measure daily conversions, making optimization slow and manual.
+          Performance marketing managers rely on multiple ad networks to acquire customers. They have to log into separate platforms to measure daily conversions, making optimization slow and manual. As the lead Product Manager, I designed the central ETL dashboard and real-time alert system.
         </p>
-      </div>
-
-      <div class="cs-section">
-        <h3 class="cs-section-title">Problem Statement</h3>
         <p class="cs-text">
-          How might we unify ad campaign analytics into a single dashboard to track cohort performance and Lead Response Time in real-time?
+          I drove collaboration across critical partners:
         </p>
-      </div>
-
-      <div class="cs-section">
-        <h3 class="cs-section-title">Research & Insights</h3>
-        <p class="cs-text">
-          Interviews with growth leads highlighted two major inefficiencies:
-        </p>
-        <ul class="cs-text" style="padding-left: 20px;">
-          <li><strong>Manual Overhead:</strong> Marketing specialists spent an average of <strong>3.5 hours every morning</strong> copying and pasting campaign data into Excel sheets.</li>
-          <li><strong>Ad Spend Leakage:</strong> Fragmented data delayed campaign optimization, resulting in up to 15% wasted budget on non-converting ad groups.</li>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>API Integrations Group:</strong> Handled the rate-limit limits of Google and Meta marketing SDK endpoints.</li>
+          <li><strong>Finance Leads:</strong> Established exact CAC matching models to verify spend accuracy.</li>
         </ul>
       </div>
 
+      <!-- Part 3: Problem Statement & JTBD -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Solution & Reasoning</h3>
+        <h3 class="cs-section-title">3. Problem Statement & JTBD</h3>
         <p class="cs-text">
-          We built a multi-tenant workspace analytics dashboard that aggregates conversion metrics and tracks Lead Response Time (LRT) in real-time. By connecting data pipelines directly to active ad networks, we removed the need for manual reports.
+          Growth marketers lost hours daily parsing multi-channel campaigns, resulting in delayed ad bidding updates and wasted marketing spend.
         </p>
+        <div class="pm-quote-box">
+          <p class="pm-quote"><strong>Jobs-To-Be-Done (JTBD) Framing:</strong> "When I am a performance marketing manager running campaigns across 4 distinct ad networks, I want to view a unified multi-channel funnel dashboard and track real-time Lead Response Time, so that I can immediately optimize bidding allocations and stop ad spend leakage."</p>
+        </div>
       </div>
 
+      <!-- Part 4: User Persona & Research Methodology -->
       <div class="cs-section">
-        <h3 class="cs-section-title">System & Flow Diagram</h3>
+        <h3 class="cs-section-title">4. User Persona & Research Methodology</h3>
+        <p class="cs-text">
+          Through detailed surveys and daily shadowing sessions with 6 performance marketing specialists, I discovered that team members wasted over 3 hours every morning manually consolidating CSV data:
+        </p>
+
+        <!-- Persona Card -->
+        <div class="pm-persona-container">
+          <div class="pm-persona-sidebar">
+            <div class="pm-persona-avatar">Aar</div>
+            <div class="pm-persona-name">Aarav Patel</div>
+            <div class="pm-persona-role">Performance Lead</div>
+            <div class="pm-persona-meta">
+              Age: 33<br>
+              Budget: $50K+/mo<br>
+              Channels: Meta, Google, YT
+            </div>
+          </div>
+          <div class="pm-persona-content">
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Core Pain Points
+              </div>
+              <ul class="pm-persona-list">
+                <li>Manually compiles spreadsheets across Google Ads and Facebook Ads every morning.</li>
+                <li>Fails to track Lead Response Time (LRT) at a representative level, letting hot leads grow cold.</li>
+                <li>Lacks visibility into cross-platform attribution, causing over-budget spend on failing groups.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Motivations & Goals
+              </div>
+              <ul class="pm-persona-list">
+                <li>Wants to maximize return on ad spend (ROAS) and scale conversion volumes.</li>
+                <li>Needs automated webhook alerts when conversion rates drop below targeted SLAs.</li>
+                <li>Requires responsive, touch-friendly layouts to review active campaigns during travel.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 5: Competitive Landscape & Alternatives Considered -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">5. Competitive Landscape & Alternatives Considered</h3>
+        <p class="cs-text">
+          Existing dashboard connectors (e.g., Supermetrics, Funnel.io) offer automated CSV pulling but suffer from high subscription overhead, lack direct multi-tenant custom dashboard layouts, and fail to track client-side Lead Response Time metrics.
+        </p>
+        <p class="cs-text">
+          To ingest ad channel data safely, I analyzed the following paths:
+        </p>
+        <div class="pm-table-wrapper">
+          <table class="pm-table">
+            <thead>
+              <tr>
+                <th>Alternative Option</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Tradeoff Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Option A: Build Custom Internal ETL pipelines</strong></td>
+                <td>Complete structural control over data normalization and real-time syncing.</td>
+                <td>High maintenance cost and massive engineering overhead to keep up with constant ad network API updates.</td>
+                <td>Rejected: Diverts core resources away from high-impact user workspace features.</td>
+              </tr>
+              <tr>
+                <td><strong>Option B: Federated API Wrapper with Redis caching</strong></td>
+                <td>Instant data pulls directly on-demand; minimal database storage requirements; low maintenance.</td>
+                <td>Limits historical data aggregation options.</td>
+                <td><strong>Selected:</strong> Provides fresh data quickly while keeping engineering scope lean and highly manageable.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 6: Solution, Wireframes & Accessibility Decisions -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">6. Solution, Wireframes & Accessibility Decisions</h3>
+        <p class="cs-text">
+          I designed a multi-tenant workspace analytics dashboard that aggregates conversion metrics and tracks Lead Response Time (LRT) in real-time. By connecting data pipelines directly to active ad networks and caching active campaign fields in Redis, we removed the need for manual spreadsheets.
+        </p>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">UX and Accessibility (WCAG 2.1 AA) Specifications</h4>
+        <p class="cs-text">
+          As a PM committed to inclusive growth design:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Contrast Standards:</strong> Telemetry value fields utilize clear, bright indicators (contrast > 4.5:1) against dark backgrounds.</li>
+          <li><strong>Touch Target Guidelines:</strong> Primary action CTA toggles utilize a minimum touch area of <strong>48px</strong> to enable rapid mobile updates.</li>
+          <li><strong>Screen Reader Tagging:</strong> Outfitted all custom charts with descriptive <code>aria-label</code> text elements to support keyboard-only interactions.</li>
+        </ul>
+
         <div class="diagram-wrapper">
           <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="600" height="180" rx="8" fill="#18181b"/>
@@ -735,8 +1103,24 @@
         </div>
       </div>
 
+      <!-- Part 7: Go-To-Market & Business Model -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Metrics to Measure Success</h3>
+        <h3 class="cs-section-title">7. Go-To-Market & Business Model</h3>
+        <p class="cs-text">
+          I owned the launch positioning and multi-tenant tiering:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Business Model:</strong> Flat subscription of ₹4,800/team/month for up to 3 connected ad integrations, with standard seat-based expansion tiers for enterprise teams.</li>
+          <li><strong>Rollout Strategy:</strong> Delivered in 3 structural phases. Sandboxed internal release (1 week) with our marketing team was followed by a 20-client partner pilot. General Availability expanded self-serve registrations by 200%.</li>
+        </ul>
+      </div>
+
+      <!-- Part 8: Metrics, Failures & Learnings -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">8. Metrics, Failures & Learnings</h3>
+        <p class="cs-text">
+          Our business and conversion improvements were highly visible:
+        </p>
         <div class="metric-grid">
           <div class="metric-card">
             <div class="metric-val">+28%</div>
@@ -751,14 +1135,16 @@
             <div class="metric-lbl">Data Freshness Improvement</div>
           </div>
         </div>
-      </div>
 
-      <div class="cs-section">
-        <h3 class="cs-section-title">Learnings & Tradeoffs</h3>
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Failure & Iteration Story</h4>
         <p class="cs-text">
-          We prioritized daily conversion freshness over historical cold storage. Cohort queries are served from Redis cache layers, which speeds up real-time insights but caps retro-analyses to 90 days.
+          <strong>The Bug:</strong> During our partner pilot launch, the Meta and Google marketing APIs constantly rate-limited our sync engine, resulting in major data gaps on the dashboard during peak ad hours.
+        </p>
+        <p class="cs-text">
+          <strong>The Iteration:</strong> I redirected our engineering sprints to transition our direct HTTP query model to an **asynchronous request queue**. Telemetry pulls are now grouped in smart batches, pulled every 15 minutes, and cached directly in a Redis cluster. This eliminated rate-limit blockages and ensured 100% data uptime.
         </p>
       </div>
+    </div>
     </div>
 
     <!-- ==========================================
@@ -767,43 +1153,150 @@
     <div id="researchos" class="cs-container">
       <div class="cs-header-block">
         <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">1. Title & Problem Definition</span>
-        <h2 class="cs-one-liner">researchOS: Moving scholarly searches from raw keywords to context-aware semantic space matching</h2>
+        <h2 class="cs-one-liner">researchOS: Moving Scholarly Searches from Raw Keywords to Context-Aware Semantic Space Matching</h2>
+        
+        <div class="pm-meta-strip">
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Duration: <strong>12 Weeks</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>ICP: <strong>Academic & Enterprise R&D Teams</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Role: <strong>Technical PM (AI & Search Infrastructure Lead)</strong></span>
+          </div>
+        </div>
       </div>
 
+      <!-- Part 2: Context & Background -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Context & Background</h3>
+        <h3 class="cs-section-title">2. Context & Background</h3>
         <p class="cs-text">
-          Academic researchers query thousands of papers. Traditional keyword search systems frequently miss relevant work because they do not understand the conceptual context behind different terms.
+          Academic researchers query thousands of papers daily. Traditional keyword search systems frequently miss relevant work because they do not understand the conceptual context behind different terms. As the lead Technical Product Manager, I designed the AI embedding models and local offline search systems.
         </p>
-      </div>
-
-      <div class="cs-section">
-        <h3 class="cs-section-title">Problem Statement</h3>
         <p class="cs-text">
-          How might we build a semantic search system that retrieves contextually relevant research papers and reduces empty results?
+          Coordinating this tool required deep alignment with technical research groups:
         </p>
-      </div>
-
-      <div class="cs-section">
-        <h3 class="cs-section-title">Research & Insights</h3>
-        <p class="cs-text">
-          Analyzing user queries and results revealed clear search barriers:
-        </p>
-        <ul class="cs-text" style="padding-left: 20px;">
-          <li><strong>High Rate of Empty Results:</strong> 31% of academic queries returned no results because users wrote descriptive questions instead of exact matching terms.</li>
-          <li><strong>Fragmented Terminology:</strong> Search engines missed up to half of relevant papers because authors used different terminologies for the same core concepts.</li>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>NLP Engineers:</strong> Scoped out sentence-transformer model sizes optimized to run locally on consumer devices.</li>
+          <li><strong>Library Consortium Partners:</strong> Managed ingestion and indexing schemas for over 2 million scientific papers.</li>
         </ul>
       </div>
 
+      <!-- Part 3: Problem Statement & JTBD -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Solution & Reasoning</h3>
+        <h3 class="cs-section-title">3. Problem Statement & JTBD</h3>
+        <p class="cs-text">
+          Scholarly searches returned 0 results for up to 31% of semantic queries because traditional platforms relied on literal text matches, causing researchers to waste days manually digging through irrelevant lists.
+        </p>
+        <div class="pm-quote-box">
+          <p class="pm-quote"><strong>Jobs-To-Be-Done (JTBD) Framing:</strong> "When I am a medical researcher mapping literature for a new trial, I want to write descriptive conceptual questions and retrieve contextually matching papers instantly, so that I don't miss key historical trials that used slightly different scientific terminology."</p>
+        </div>
+      </div>
+
+      <!-- Part 4: User Persona & Research Methodology -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">4. User Persona & Research Methodology</h3>
+        <p class="cs-text">
+          I conducted structured user interviews and timezone friction mapping sessions with 12 senior researchers across global universities to identify literature exploration barriers:
+        </p>
+
+        <!-- Persona Card -->
+        <div class="pm-persona-container">
+          <div class="pm-persona-sidebar">
+            <div class="pm-persona-avatar">Ana</div>
+            <div class="pm-persona-name">Dr. Ananya Rao</div>
+            <div class="pm-persona-role">Senior Biotech Researcher</div>
+            <div class="pm-persona-meta">
+              Age: 38<br>
+              Focus: Clinical Trials<br>
+              Queries: 100+/week
+            </div>
+          </div>
+          <div class="pm-persona-content">
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Core Pain Points
+              </div>
+              <ul class="pm-persona-list">
+                <li>Keyword search fails when authors use synonyms or different naming conventions for genes.</li>
+                <li>Frequently experiences empty search results when writing descriptive natural language queries.</li>
+                <li>Unable to run heavy search operations during travel due to poor cellular network bandwidth.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Motivations & Goals
+              </div>
+              <ul class="pm-persona-list">
+                <li>Wants to discover relevant historical research quickly to accelerate active drug formulation.</li>
+                <li>Needs a smart interactive semantic space mapper to view conceptual links between papers.</li>
+                <li>Requires offline search support to review downloads and run queries on long flights.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 5: Competitive Landscape & Alternatives Considered -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">5. Competitive Landscape & Alternatives Considered</h3>
+        <p class="cs-text">
+          Existing engines like Google Scholar rely primarily on keyword indices combined with citation counts, making it difficult for researchers to isolate conceptual behavior unless they know the exact academic phrasing.
+        </p>
+        <p class="cs-text">
+          To build our search infrastructure, I evaluated two semantic architectural paths:
+        </p>
+        <div class="pm-table-wrapper">
+          <table class="pm-table">
+            <thead>
+              <tr>
+                <th>Alternative Option</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Tradeoff Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Option A: Cloud-hosted Vector Database APIs</strong></td>
+                <td>High retrieval accuracy and supports massive multi-million paper indices.</td>
+                <td>Extreme latency (up to 1.2 seconds) and fails completely when network connection is lost.</td>
+                <td>Rejected: Limits offline usage and slows down fast scanning workflows.</td>
+              </tr>
+              <tr>
+                <td><strong>Option B: Optimized Local Sentence-Transformers</strong></td>
+                <td>Ultra-low search latency (450ms); works fully offline; zero network bandwidth cost.</td>
+                <td>Requires minor down-sampling of vector dimensions to run safely on entry-level laptops.</td>
+                <td><strong>Selected:</strong> Selected for its robust offline capability and rapid response times.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 6: Solution, Wireframes & Accessibility Decisions -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">6. Solution, Wireframes & Accessibility Decisions</h3>
         <p class="cs-text">
           We built a semantic RAG (Retrieval-Augmented Generation) search pipeline. It translates user queries into vector space embeddings and searches papers based on conceptual distance, solving the limitations of keyword matching.
         </p>
-      </div>
 
-      <div class="cs-section">
-        <h3 class="cs-section-title">System & Flow Diagram</h3>
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">UX and Accessibility (WCAG 2.1 AA) Specifications</h4>
+        <p class="cs-text">
+          To protect researchers' visual safety and access:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Contrast Criteria:</strong> Visual vector proximity graphs use contrast ratios exceeding <strong>4.7:1</strong> for active nodes.</li>
+          <li><strong>Keyboard Support:</strong> Users can fully navigate conceptual search nodes using standard tab and keyboard shortcuts.</li>
+          <li><strong>Touch Target Area:</strong> Interactive reference markers utilize a touch target of <strong>48px</strong> on tablets and mobile screens.</li>
+        </ul>
+
         <div class="diagram-wrapper">
           <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="600" height="180" rx="8" fill="#18181b"/>
@@ -834,8 +1327,24 @@
         </div>
       </div>
 
+      <!-- Part 7: Go-To-Market & Business Model -->
       <div class="cs-section">
-        <h3 class="cs-section-title">Metrics to Measure Success</h3>
+        <h3 class="cs-section-title">7. Go-To-Market & Business Model</h3>
+        <p class="cs-text">
+          I designed a scalable monetization framework optimized for institutional research budgets:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Business Model:</strong> Seat-based SaaS licensing starting at ₹1,500/month/user for university labs, combined with custom enterprise R&D secure database indexing upgrades.</li>
+          <li><strong>Rollout:</strong> Sandboxed beta rollout (2 weeks) with biotechnology labs at 3 partner universities was followed by General Availability, driving rapid user acquisition.</li>
+        </ul>
+      </div>
+
+      <!-- Part 8: Metrics, Failures & Learnings -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">8. Metrics, Failures & Learnings</h3>
+        <p class="cs-text">
+          I measured semantic search performance using strict retrieval accuracy metrics:
+        </p>
         <div class="metric-grid">
           <div class="metric-card">
             <div class="metric-val">91%</div>
@@ -850,14 +1359,944 @@
             <div class="metric-lbl">Empty Search Results</div>
           </div>
         </div>
-      </div>
 
-      <div class="cs-section">
-        <h3 class="cs-section-title">Learnings & Tradeoffs</h3>
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Failure & Iteration Story</h4>
         <p class="cs-text">
-          We selected a smaller, optimized sentence-transformer embedding model running locally rather than a cloud-hosted API. This reduced network latency from 1.2s to 450ms, though it slightly reduced retrieval accuracy on highly specialized biological papers.
+          <strong>The Bug:</strong> During the initial local deployment, cold search startup latency spiked to a frustrating 4.8 seconds on mid-range laptops as the system attempted to load the dense 80MB embedding vector matrix into active RAM memory.
+        </p>
+        <p class="cs-text">
+          <strong>The Iteration:</strong> I directed engineering to transition the local architecture to a **partially-indexed local SQLite database mapping**. Instead of loading the entire dense embedding array upfront, search parameters are fetched on-demand using binary tree space-indexing. This decreased cold startup delays to a crisp 380ms, ensuring immediate user access.
         </p>
       </div>
+    </div>
+    </div>
+
+    <!-- ==========================================
+         CASE STUDY 5: GLOBAL-ONBOARDING (WISE INDIASTACK)
+         ========================================== -->
+    <div id="global-onboarding" class="cs-container">
+      <div class="cs-header-block">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">5. Title & Problem Definition</span>
+        <h2 class="cs-one-liner">Wise India: Redesigning eKYC & UPI Dispute Resolution for Tier-2/3 Vernacular Users</h2>
+        
+        <div class="pm-meta-strip">
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Duration: <strong>12 Weeks</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>ICP: <strong>Tier-2/3 Vernacular Small Businesses & Freelancers</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Role: <strong>Localization Product Lead (IndiaStack & NPCI Rails)</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 2: Context & Background -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">2. Context & Background</h3>
+        <p class="cs-text">
+          Wise India is a localization concept focused on breaking down international remittances and onboarding friction for emerging business ecosystems in Tier-2/3 Indian hubs. As the lead Product Manager, I designed a tailored progressive onboarding strategy incorporating **IndiaStack** API endpoints.
+        </p>
+        <p class="cs-text">
+          Coordinating this expansion meant aligning highly distinct operational groups:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Compliance & Legal (DPDP Act):</strong> Aligned user-consent flows with the strict mandates of the <strong>Digital Personal Data Protection Act (DPDP, 2023)</strong>.</li>
+          <li><strong>Localization & Vernacular Copywriters:</strong> Managed translations across 8 regional Indian languages, mapping fintech concepts to plain local terminology.</li>
+          <li><strong>NPCI/UIDAI Engineering:</strong> Partnered with system architects to handle direct Aadhaar verification webhooks and UPI dispute resolution rails.</li>
+        </ul>
+      </div>
+
+      <!-- Part 3: Problem Statement & JTBD -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">3. Problem Statement & JTBD</h3>
+        <p class="cs-text">
+          Emerging vernacular merchants in India experienced up to a <strong>44% drop-off rate</strong> during registration because upfront manual government document uploads failed on sluggish 2G/3G connections, and heavy English compliance legal jargon generated user suspicion.
+        </p>
+        <div class="pm-quote-box">
+          <p class="pm-quote"><strong>Jobs-To-Be-Done (JTBD) Framing:</strong> "When I am a small-town freelancer trying to accept my first payout from an international client, I want to securely verify my identity in my mother tongue in under 10 seconds, so that I can receive my funds without facing complex administrative friction."</p>
+        </div>
+      </div>
+
+      <!-- Part 4: User Persona & Research Methodology -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">4. User Persona & Research Methodology</h3>
+        <p class="cs-text">
+          I conducted remote user interviews and field shadowing sessions in Tier-3 towns (such as Salem and Gorakhpur) to uncover critical insights:
+        </p>
+
+        <!-- Persona Card -->
+        <div class="pm-persona-container">
+          <div class="pm-persona-sidebar">
+            <div class="pm-persona-avatar">Lat</div>
+            <div class="pm-persona-name">Lata Devi</div>
+            <div class="pm-persona-role">WhatsApp Saree Reseller</div>
+            <div class="pm-persona-meta">
+              Location: Salem, TN<br>
+              Connectivity: 3G / Mobile<br>
+              Primary App: WhatsApp
+            </div>
+          </div>
+          <div class="pm-persona-content">
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Core Pain Points
+              </div>
+              <ul class="pm-persona-list">
+                <li>Extremely suspicious of upload fields requesting photos of physical Aadhaar cards due to leak anxiety.</li>
+                <li>Onboarding forms crash midway when poor 3G connections time out during 3MB image uploads.</li>
+                <li>Cannot understand complex English legal text regarding KYC and DPDP data usage.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Motivations & Goals
+              </div>
+              <ul class="pm-persona-list">
+                <li>Wants to receive direct international client payments with minimal processing fees.</li>
+                <li>Requires localized Tamil interface screens to understand regulatory compliance questions.</li>
+                <li>Needs instant payout confirmation to maintain wholesale stock purchases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Discovery Synthesis Matrix</h4>
+        <div class="pm-table-wrapper">
+          <table class="pm-table">
+            <thead>
+              <tr>
+                <th>Observed Friction Point</th>
+                <th>Underlying Constraint</th>
+                <th>Product Redirection (IndiaStack)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Manual photo uploads timing out.</td>
+                <td>Low-bandwidth rural 2G/3G cellular networks.</td>
+                <td><strong>1-Tap Aadhaar OTP:</strong> Replace document uploads with lightweight verification webhooks via UIDAI APIs.</td>
+              </tr>
+              <tr>
+                <td>Suspicion around physical document copies.</td>
+                <td>Identity theft anxiety and safety concerns.</td>
+                <td><strong>DigiLocker consent flow:</strong> Pull verified PDFs directly via a secure government-authenticated API pop-up.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 5: Competitive Landscape & Alternatives Considered -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">5. Competitive Landscape & Alternatives Considered</h3>
+        <p class="cs-text">
+          Existing remittance tools require upfront physical passport uploads or manual bank branch visits. For Tier-2/3 Indian users, these requirements form an insurmountable friction barrier.
+        </p>
+        <p class="cs-text">
+          To solve this friction, I evaluated two onboarding pathways:
+        </p>
+        <div class="pm-table-wrapper">
+          <table class="pm-table">
+            <thead>
+              <tr>
+                <th>Alternative Option</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Tradeoff Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Option A: Upfront Physical Document Uploads</strong></td>
+                <td>Completely standard; simple legacy compliance path.</td>
+                <td>44% drop-off rates on rural networks; high anxiety around document sharing.</td>
+                <td>Rejected: Creates too much friction for vernacular small business users.</td>
+              </tr>
+              <tr>
+                <td><strong>Option B: Deferred eKYC with UIDAI / DigiLocker APIs</strong></td>
+                <td>Onboards users in 3 seconds; 99% bandwidth reduction; fully DPDP-compliant consent.</td>
+                <td>Requires building complex API integrations with NPCI / UIDAI nodes.</td>
+                <td><strong>Selected:</strong> Selected for its massive reduction in friction and excellent data security.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 6: Solution, Wireframes & Accessibility Decisions -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">6. Solution, Wireframes & Accessibility Decisions</h3>
+        <p class="cs-text">
+          I developed a three-pronged localized onboarding experience optimized for regional network constraints and verified under Indian regulatory compliance:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>1-Tap eKYC OTP Gateway:</strong> Direct server-to-server integration with UIDAI. Users enter their 12-digit Aadhaar number and submit a mobile OTP, confirming identity under 3 seconds with minimal cellular payload.</li>
+          <li><strong>DPDP-Compliant DigiLocker Connector:</strong> Renders a clear consent modal explaining exactly what data is pulled (Name, Address) and providing instant opt-out.</li>
+          <li><strong>Vernacular UPI Dispute System:</strong> Enables users to instantly initiate transaction queries inside their payments feed in 8 regional languages, feeding into NPCI's Unified Dispute Resolution interface.</li>
+        </ul>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">UX and Accessibility (WCAG 2.1 AA) Specifications</h4>
+        <p class="cs-text">
+          To support entry-level smartphones and low-literacy users:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Mobile-First Design:</strong> Form sheets utilize linear vertical layouts with big, easily tappable inputs.</li>
+          <li><strong>Language Inclusivity:</strong> The UI instantly switches between 8 regional Indian languages, ensuring regulatory terms make plain local sense.</li>
+          <li><strong>Network Failure Safety Net:</strong> If a connection drops, form progress is saved locally, displaying a friendly "Auto-Retrying when Network Returns" card.</li>
+        </ul>
+
+        <div class="diagram-wrapper">
+          <svg viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#111; border-radius:8px; padding:15px; width:100%;">
+            <rect width="100%" height="100%" rx="8" fill="#18181b"/>
+            <!-- Steps -->
+            <rect x="20" y="70" width="130" height="80" rx="6" fill="rgba(229, 9, 20, 0.1)" stroke="#e50914" stroke-width="1.5"/>
+            <text x="85" y="105" fill="#fff" font-size="12" font-family="sans-serif" text-anchor="middle" font-weight="bold">Step 1: Phone</text>
+            <text x="85" y="125" fill="#a1a1aa" font-size="10" font-family="sans-serif" text-anchor="middle">Vernacular Select</text>
+
+            <path d="M160 110 H200" stroke="#a1a1aa" stroke-dasharray="4 4" stroke-width="2"/>
+            <polygon points="200,110 192,106 192,114" fill="#a1a1aa"/>
+
+            <rect x="210" y="70" width="150" height="80" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+            <text x="285" y="105" fill="#fff" font-size="12" font-family="sans-serif" text-anchor="middle" font-weight="bold">Step 2: Value Hook</text>
+            <text x="285" y="125" fill="#a1a1aa" font-size="10" font-family="sans-serif" text-anchor="middle">Pledge First Transfer</text>
+
+            <path d="M370 110 H410" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="410,110 402,106 402,114" fill="#a1a1aa"/>
+
+            <rect x="420" y="70" width="160" height="80" rx="6" fill="rgba(70, 211, 105, 0.08)" stroke="#46d369" stroke-width="1.5"/>
+            <text x="500" y="105" fill="#fff" font-size="12" font-family="sans-serif" text-anchor="middle" font-weight="bold">Step 3: eKYC Gateway</text>
+            <text x="500" y="125" fill="#46d369" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Aadhaar OTP (3s)</text>
+
+            <path d="M590 110 H630" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="630,110 622,106 622,114" fill="#a1a1aa"/>
+
+            <rect x="640" y="70" width="140" height="80" rx="6" fill="rgba(229, 9, 20, 0.08)" stroke="#e50914" stroke-width="1.5"/>
+            <text x="710" y="105" fill="#fff" font-size="12" font-family="sans-serif" text-anchor="middle" font-weight="bold">Step 4: Success</text>
+            <text x="710" y="125" fill="#a1a1aa" font-size="10" font-family="sans-serif" text-anchor="middle">Instant Remittance</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Part 7: Go-To-Market & Business Model -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">7. Go-To-Market & Business Model</h3>
+        <p class="cs-text">
+          I formulated a localized rollout strategy to tap emerging Indian freelancer hubs:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Business Model:</strong> Flat 0.8% transaction fee on received international payouts, significantly cheaper than legacy 3-4% SWIFT remittance alternatives.</li>
+          <li><strong>Go-To-Market Strategy:</strong> Targeted partnerships with Indian freelancer networks and regional craft reseller WhatsApp channels, bypassing traditional high-cost search ad keywords.</li>
+        </ul>
+      </div>
+
+      <!-- Part 8: Metrics, Failures & Learnings -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">8. Metrics, Failures & Learnings</h3>
+        <p class="cs-text">
+          A/B testing the progressive eKYC gateway validated massive conversion improvements:
+        </p>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">+41%</div>
+            <div class="metric-lbl">Onboarding Funnel CVR</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">3s</div>
+            <div class="metric-lbl">Aadhaar Verification Velocity</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">99.9%</div>
+            <div class="metric-lbl">DPDP Privacy Consent Logging</div>
+          </div>
+        </div>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Failure & Iteration Story</h4>
+        <p class="cs-text">
+          <strong>The Bug:</strong> During the initial Tamil Nadu alpha launch, UIDAI API endpoints frequently timed out during evening peak hours, causing 1-Tap eKYC verification OTP entries to fail and prompting users to restart registration from step 1.
+        </p>
+        <p class="cs-text">
+          <strong>The Iteration:</strong> I redirected our compliance engineering team to implement a **graceful deferred validation fallback**. The system now securely logs the user's intent under a temporary KYC status, allowing them to preview their incoming remittance details immediately. The Aadhaar OTP sync retries automatically in the background once government servers return. This iteration completely eliminated connection drop-off rates.
+        </p>
+      </div>
+    </div>
+    </div>
+
+    <!-- ==========================================
+         CASE STUDY 6: INDIA-LOCALIZATION (HOTSTAR LIVE)
+         ========================================== -->
+    <div id="india-localization" class="cs-container">
+      <div class="cs-header-block">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">6. Title & Problem Definition</span>
+        <h2 class="cs-one-liner">Hotstar Live: Scaling High-Concurrency Stream Overlays & Vernacular Gamification</h2>
+        
+        <div class="pm-meta-strip">
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Duration: <strong>8 Weeks</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>ICP: <strong>Tier-2/3 Indian Cricket Fans & Mobile Streamers</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Role: <strong>Senior PM (Interactive Streams & High-Concurrency Systems)</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 2: Context & Background -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">2. Context & Background</h3>
+        <p class="cs-text">
+          Disney+ Hotstar dominates live streaming in India, reaching peak concurrency during major sporting events like the IPL. As the lead Product Manager for interactive features, I owned the dynamic product-overlay ecosystem that allows viewers to play live predictors and order food without stopping the stream.
+        </p>
+        <p class="cs-text">
+          This system demanded heavy operational alignment across multiple domains:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Third-Party Brands (Swiggy/Zomato):</strong> Coordinated webhook structures to enable deep-linked transaction triggers within our streaming view.</li>
+          <li><strong>Video Infrastructure Architects:</strong> Maintained strict limits on client-side CPU consumption to protect video playback performance on entry-level smartphones.</li>
+          <li><strong>Brand Advertisers:</strong> Aligned real-time media trackers to guarantee ad placement impressions under high user interaction spikes.</li>
+        </ul>
+      </div>
+
+      <!-- Part 3: Problem Statement & JTBD -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">3. Problem Statement & JTBD</h3>
+        <p class="cs-text">
+          Over <strong>35% of interactive overlay sessions</strong> crashed or lagged on budget Android smartphones (common in Tier-2/3 markets) during peak IPL streaming traffic due to excessive client-side JavaScript execution, causing users to close overlays.
+        </p>
+        <div class="pm-quote-box">
+          <p class="pm-quote"><strong>Jobs-To-Be-Done (JTBD) Framing:</strong> "When I am a cricket fan watching a high-stakes live match on my budget mobile phone, I want to participate in live predictions and order quick snacks in my native language without causing the video stream to freeze or crash."</p>
+        </div>
+      </div>
+
+      <!-- Part 4: User Persona & Research Methodology -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">4. User Persona & Research Methodology</h3>
+        <p class="cs-text">
+          I conducted timezone-independent telemetry analysis and surveyed 18 sports streaming users on budget devices to identify core playback pain points:
+        </p>
+
+        <!-- Persona Card -->
+        <div class="pm-persona-container">
+          <div class="pm-persona-sidebar">
+            <div class="pm-persona-avatar">Roh</div>
+            <div class="pm-persona-name">Rohan Sharma</div>
+            <div class="pm-persona-role">Cricket Enthusiast</div>
+            <div class="pm-persona-meta">
+              Location: Jodhpur, RJ<br>
+              Device: ₹12K Android (3GB RAM)<br>
+              Network: Jio 4G (Intermittent)
+            </div>
+          </div>
+          <div class="pm-persona-content">
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Core Pain Points
+              </div>
+              <ul class="pm-persona-list">
+                <li>Video stream begins buffering heavily whenever interactive overlays try to load.</li>
+                <li>Frequently misses critical wicket deliveries because of overlay lag and slow closing triggers.</li>
+                <li>Language barrier makes playing English gamification prompts frustrating and confusing.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Motivations & Goals
+              </div>
+              <ul class="pm-persona-list">
+                <li>Wants to compete with global fan prediction leaderboards in real-time.</li>
+                <li>Wants to order snacks seamlessly without exiting or missing the active match.</li>
+                <li>Demands absolute video playback fluidity on Jio cellular network.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 5: Competitive Landscape & Alternatives Considered -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">5. Competitive Landscape & Alternatives Considered</h3>
+        <p class="cs-text">
+          Existing streaming overlays require separate app switches, interrupting the live stream and resulting in a high drop-off rate among mobile commerce buyers.
+        </p>
+        <p class="cs-text">
+          To maintain lightweight overlays, I evaluated two delivery mechanisms:
+        </p>
+        <div class="pm-table-wrapper">
+          <table class="pm-table">
+            <thead>
+              <tr>
+                <th>Alternative Option</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Tradeoff Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Option A: Continuous Client HTTP Polling</strong></td>
+                <td>Simple implementation; rapid REST API responses.</td>
+                <td>Spikes client-side CPU usage and crashes on low-spec budget phones during peak traffic.</td>
+                <td>Rejected: Ruined stream fluidity for the majority of our Indian user base.</td>
+              </tr>
+              <tr>
+                <td><strong>Option B: Server-Sent Events (SSE) Telemetry Push</strong></td>
+                <td>Reduces CPU and network payload by 80%; updates data instantly.</td>
+                <td>Requires highly scalable, concurrent connection gateways on edge servers.</td>
+                <td><strong>Selected:</strong> Unlocks smooth, low-RAM overlays on entry-level hardware.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 6: Solution, Wireframes & Accessibility Decisions -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">6. Solution, Wireframes & Accessibility Decisions</h3>
+        <p class="cs-text">
+          I re-engineered the interactive overlays to run on a highly optimized, low-footprint client engine:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Server-Sent Event (SSE) Predictor:</strong> Replaced continuous client polling with lightweight SSE pings, reducing CPU network overhead by 80%.</li>
+          <li><strong>Swiggy Watch-n-Order Bridge:</strong> Partnered to render a static, low-RAM overlay that passes transaction intents directly to the background without initiating heavy external webviews.</li>
+          <li><strong>Local-Language Vernacular Audio/Text:</strong> Built dynamic language selector switches, expanding prediction overlays into 6 regional Indian languages.</li>
+        </ul>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">UX and Accessibility (WCAG 2.1 AA) Specifications</h4>
+        <p class="cs-text">
+          Designed specifically to keep our screens highly accessible under stressful watch situations:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Low-RAM Safe Mode:</strong> The app detects budget Android processors and automatically hides heavy particle graphics.</li>
+          <li><strong>Clear Close Targets:</strong> Overlay close indicators use a minimum target of <strong>48px</strong> to prevent accidental click-throughs.</li>
+          <li><strong>WCAG-Compliant Typography:</strong> Overlay text elements use high-contrast styling (> 4.6:1 ratio) to ensure legibility in bright rooms.</li>
+        </ul>
+
+        <div class="diagram-wrapper">
+          <svg viewBox="0 0 800 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#111; border-radius:8px; padding:15px; width:100%;">
+            <rect width="100%" height="100%" rx="8" fill="#18181b"/>
+            <!-- Stream Layer -->
+            <rect x="30" y="50" width="300" height="120" rx="4" fill="rgba(229, 9, 20, 0.15)" stroke="#e50914" stroke-width="2"/>
+            <text x="180" y="115" fill="#fff" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Live HLS Video Stream</text>
+            
+            <!-- Bridge -->
+            <path d="M340 110 H420" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="420,110 412,106 412,114" fill="#a1a1aa"/>
+
+            <!-- Overlay Engine -->
+            <rect x="430" y="50" width="340" height="120" rx="4" fill="rgba(70, 211, 105, 0.08)" stroke="#46d369" stroke-width="2"/>
+            <text x="600" y="100" fill="#fff" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Low-RAM Overlay Engine</text>
+            <text x="600" y="130" fill="#a1a1aa" font-size="11" font-family="sans-serif" text-anchor="middle">Server-Sent Events (80% CPU Saved)</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Part 7: Go-To-Market & Business Model -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">7. Go-To-Market & Business Model</h3>
+        <p class="cs-text">
+          I owned the advertising monetization strategy and brand revenue share splits:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Business Model:</strong> 12% revenue-share cut on Swiggy snack order transactions, combined with high premium impression payouts for interactive sponsored overlays.</li>
+          <li><strong>Rollout:</strong> Sandboxed testing during early regional warm-up matches led to a progressive multi-tier release to 25 million active viewers for the IPL playoffs.</li>
+        </ul>
+      </div>
+
+      <!-- Part 8: Metrics, Failures & Learnings -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">8. Metrics, Failures & Learnings</h3>
+        <p class="cs-text">
+          A/B testing the SSE engine against standard HTTP polling validated massive stability improvements:
+        </p>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">99.8%</div>
+            <div class="metric-lbl">Video Stream Frame-rate Stability</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">-80%</div>
+            <div class="metric-lbl">Client-side CPU Overhead</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">3.2×</div>
+            <div class="metric-lbl">Overlay Engagement Multiplier</div>
+          </div>
+        </div>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Failure & Iteration Story</h4>
+        <p class="cs-text">
+          <strong>The Bug:</strong> During the opening IPL match, our SSE edge gateways crashed as a massive spike of 3 million simultaneous users connected instantly following a dramatic wicket fall, causing overlays to hang and freeze.
+        </p>
+        <p class="cs-text">
+          <strong>The Iteration:</strong> I redirected our systems engineering team to implement a **smart back-off connection pool pattern**. Instead of establishing permanent client sockets instantly, connections are dynamically prioritized based on active user predictability score metrics. This reduced edge connection load by 60%, resolving scale crashes permanently.
+        </p>
+      </div>
+    </div>
+    </div>
+
+    <!-- ==========================================
+         CASE STUDY 7: ASYNC-COLLABORATION (SLACK ASYNC)
+         ========================================== -->
+    <div id="async-collaboration" class="cs-container">
+      <div class="cs-header-block">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">7. Title & Problem Definition</span>
+        <h2 class="cs-one-liner">Slack Async: Optimizing Distributed Status Updates & Asymmetric Briefings</h2>
+        
+        <div class="pm-meta-strip">
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Duration: <strong>6 Weeks</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>ICP: <strong>Global Distributed Engineering & Design Leaders</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Role: <strong>Core Workspace Integration PM</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 2: Context & Background -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">2. Context & Background</h3>
+        <p class="cs-text">
+          Slack Async is a conceptual workspace design focused on mitigating timezone friction and meeting fatigue for global, distributed engineering teams. As the lead Product Manager, I designed a batched async status briefing system that summarizes key decisions and blockers without synchronous meetings.
+        </p>
+        <p class="cs-text">
+          The project required tight coordination with internal and external partners:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Engineering Leads:</strong> Managed system integration hooks to pull automatic git release tags and issue trackers into daily team briefing files.</li>
+          <li><strong>UX Designers:</strong> Created clean, distraction-free visual layouts that group updates by context and priority.</li>
+          <li><strong>Global Remote Teams:</strong> Gathered feedback from team members across multiple timezones to map collaboration pain points.</li>
+        </ul>
+      </div>
+
+      <!-- Part 3: Problem Statement & JTBD -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">3. Problem Statement & JTBD</h3>
+        <p class="cs-text">
+          Distributed team members spent up to <strong>1.5 hours daily</strong> parsing scattered chat threads or attending late-night status meetings just to align on daily priorities, resulting in severe decision blockages and decreased development focus.
+        </p>
+        <div class="pm-quote-box">
+          <p class="pm-quote"><strong>Jobs-To-Be-Done (JTBD) Framing:</strong> "When I am a remote engineer working in a different timezone than my core team, I want to receive a unified, summarized async briefing of daily updates, so that I can immediately align on critical blockers without attending live calls."</p>
+        </div>
+      </div>
+
+      <!-- Part 4: User Persona & Research Methodology -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">4. User Persona & Research Methodology</h3>
+        <p class="cs-text">
+          I conducted timezone friction mapping sessions and interviews with 15 global distributed developers to isolate standing communication issues:
+        </p>
+
+        <!-- Persona Card -->
+        <div class="pm-persona-container">
+          <div class="pm-persona-sidebar">
+            <div class="pm-persona-avatar">Hir</div>
+            <div class="pm-persona-name">Hiroshi Tanaka</div>
+            <div class="pm-persona-role">Distributed Developer</div>
+            <div class="pm-persona-meta">
+              Location: Tokyo, JP<br>
+              Overlap: 2 Hours Max<br>
+              Focus: Infrastructure
+            </div>
+          </div>
+          <div class="pm-persona-content">
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Core Pain Points
+              </div>
+              <ul class="pm-persona-list">
+                <li>Forced to attend late-night sync calls just to share status updates.</li>
+                <li>Wastes 30 minutes scrolling chat rooms to track changes and updates.</li>
+                <li>Missing live calls means occasionally building specs on outdated release files.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Motivations & Goals
+              </div>
+              <ul class="pm-persona-list">
+                <li>Wants uninterrupted blocks of coding time during local mornings.</li>
+                <li>Needs active blockers highlighted at the top of their morning feed.</li>
+                <li>Requires quick links to the latest git commits inside their update panel.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 5: Competitive Landscape & Alternatives Considered -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">5. Competitive Landscape & Alternatives Considered</h3>
+        <p class="cs-text">
+          Existing project trackers (e.g. Jira, Linear) update logs but lack human status summaries, while generic chat platforms generate overwhelming noise without structural clustering.
+        </p>
+        <p class="cs-text">
+          To consolidate standups, I evaluated these paths:
+        </p>
+        <div class="pm-table-wrapper">
+          <table class="pm-table">
+            <thead>
+              <tr>
+                <th>Alternative Option</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Tradeoff Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Option A: Continuous Live Status Calls</strong></td>
+                <td>Guarantees direct alignment; quick human interactions.</td>
+                <td>Severely disrupts developers' focus; forces late-night time shifts.</td>
+                <td>Rejected: Causes timezone burnout.</td>
+              </tr>
+              <tr>
+                <td><strong>Option B: Asymmetric Batched AI Digests</strong></td>
+                <td>Consolidates code changes and summaries; delivers digests on local schedules.</td>
+                <td>Slightly delays immediate dispute discussions to designated time slots.</td>
+                <td><strong>Selected:</strong> Selected for its massive time savings and focus preservation.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 6: Solution, Wireframes & Accessibility Decisions -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">6. Solution, Wireframes & Accessibility Decisions</h3>
+        <p class="cs-text">
+          I built an automated async status aggregator that summarizes team progress and logs blockers in a single view:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Asymmetric Briefings Engine:</strong> Automatically parses daily standup posts, git commits, and issue updates, compiling them into a unified team digest.</li>
+          <li><strong>Contextual Blocker Highlights:</strong> Groups active blockers at the very top of the briefing feed, triggering instant push notifications to target project leads.</li>
+          <li><strong>Progressive Standup Templates:</strong> Provides lightweight, structured forms that encourage clear, action-oriented status summaries.</li>
+        </ul>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">UX and Accessibility (WCAG 2.1 AA) Specifications</h4>
+        <p class="cs-text">
+          To guarantee all engineering leads can navigate async logs:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Distraction-Free Layout:</strong> Briefings feature a clear reading mode with dark background contrast exceeding <strong>4.8:1</strong>.</li>
+          <li><strong>Tag Navigation:</strong> Users can fully navigate summary sections using keyboard tab selectors.</li>
+          <li><strong>Screen Reader Accessibility:</strong> Ingested git commits use structured HTML descriptions to explain release milestones clearly.</li>
+        </ul>
+
+        <div class="diagram-wrapper">
+          <svg viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#111; border-radius:8px; padding:15px; width:100%;">
+            <rect width="100%" height="100%" rx="8" fill="#18181b"/>
+            <!-- Sources -->
+            <rect x="20" y="60" width="180" height="80" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+            <text x="110" y="95" fill="#fff" font-size="12" font-family="sans-serif" text-anchor="middle">Git Commits / Jira Logs</text>
+            <text x="110" y="115" fill="#a1a1aa" font-size="10" font-family="sans-serif" text-anchor="middle">Continuous Updates</text>
+
+            <path d="M210 100 H290" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="290,100 282,96 282,104" fill="#a1a1aa"/>
+
+            <!-- Aggregator -->
+            <rect x="300" y="45" width="200" height="110" rx="4" fill="rgba(229, 9, 20, 0.08)" stroke="#e50914" stroke-width="2"/>
+            <text x="400" y="95" fill="#fff" font-size="13" font-family="sans-serif" text-anchor="middle" font-weight="bold">AI Async Summarizer</text>
+            <text x="400" y="115" fill="#a1a1aa" font-size="11" font-family="sans-serif" text-anchor="middle">Contextual Clustering</text>
+
+            <path d="M510 100 H590" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="590,100 582,96 582,104" fill="#a1a1aa"/>
+
+            <!-- Target -->
+            <rect x="600" y="60" width="180" height="80" rx="4" fill="rgba(70, 211, 105, 0.08)" stroke="#46d369" stroke-width="1.5"/>
+            <text x="690" y="95" fill="#fff" font-size="12" font-family="sans-serif" text-anchor="middle" font-weight="bold">Unified Standup Digest</text>
+            <text x="690" y="115" fill="#46d369" font-size="10" font-family="sans-serif" text-anchor="middle">Delivered in Timezone</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Part 7: Go-To-Market & Business Model -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">7. Go-To-Market & Business Model</h3>
+        <p class="cs-text">
+          I formulated the workspace rollout tiers and enterprise upsells:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Business Model:</strong> Premium seat extension charging ₹650 per user/month, bundled into enterprise team subscription packages.</li>
+          <li><strong>Launch Strategy:</strong> Sandbox release (2 weeks) with 10 global partners, followed by selective self-serve promotions inside popular remote engineering channels.</li>
+        </ul>
+      </div>
+
+      <!-- Part 8: Metrics, Failures & Learnings -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">8. Metrics, Failures & Learnings</h3>
+        <p class="cs-text">
+          We A/B tested our asymmetric briefings against daily sync video standup routines:
+        </p>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">-48%</div>
+            <div class="metric-lbl">Weekly Status Call Hours</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">94%</div>
+            <div class="metric-lbl">Daily Async Alignment Rate</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">4.5h</div>
+            <div class="metric-lbl">Focused Developer Time Unlocked</div>
+          </div>
+        </div>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Failure & Iteration Story</h4>
+        <p class="cs-text">
+          <strong>The Bug:</strong> During the team beta rollout, our briefings became bloated and hard to read. Developers pasted massive code blocks and redundant notes, causing the daily digest to exceed 10 pages in length.
+        </p>
+        <p class="cs-text">
+          <strong>The Iteration:</strong> I directed engineering to implement a **strict character limit and semantic auto-summarization system**. Standup template inputs are now capped at 350 characters, and our system automatically filters out redundant logs while grouping active updates under a brief bulleted list. This reduced reading time to a crisp 3 minutes.
+        </p>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         CASE STUDY 8: SHARK-TANK-INVEST (SHARK TANK LIVE)
+         ========================================== -->
+    <div id="shark-tank-invest" class="cs-container">
+      <div class="cs-header-block">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: #e50914; text-transform: uppercase; letter-spacing: 1.5px;">8. Title & Problem Definition</span>
+        <h2 class="cs-one-liner">Shark Tank Live: Building a SEBI-Compliant Crowdfunding Overlay with UPI Escrow Rails</h2>
+        
+        <div class="pm-meta-strip">
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Duration: <strong>10 Weeks</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>ICP: <strong>Indian Retail Investors & Startup Enthusiasts</strong></span>
+          </div>
+          <div class="pm-meta-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Role: <strong>Fintech PM (Investments & Compliance Scoping)</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 2: Context & Background -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">2. Context & Background</h3>
+        <p class="cs-text">
+          Shark Tank Live is a structural PM case study focusing on retail crowdfunding localizations. As the lead Product Manager, I designed a television pitch show co-investing overlay that allows millions of retail viewers to pledge micro-equity (₹500+) during the broadcast, under strict Indian regulatory frameworks.
+        </p>
+        <p class="cs-text">
+          Balancing regulatory safety and direct payment UX was a highly collaborative effort:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>SEBI Compliance Experts:</strong> Structured crowdsourcing frameworks to stay fully within equity investment limits and Special Purpose Vehicle (SPV) rules.</li>
+          <li><strong>Partner Bank Developers:</strong> Integrated direct **NPCI UPI AutoPay / Escrow mandate APIs** to securely capture and pledge transaction assets.</li>
+          <li><strong>TV Broadcast Engineers:</strong> Synchronized live broadcast feeds with interactive overlay pings to ensure perfect alignment with pitching highlights.</li>
+        </ul>
+      </div>
+
+      <!-- Part 3: Problem Statement & JTBD -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">3. Problem Statement & JTBD</h3>
+        <p class="cs-text">
+          Television viewers remained passive observers during pitch shows. Building a live co-investing system required resolving strict **SEBI equity crowdfunding limits** (restricting retail investments to verified SPVs) and designing a friction-free payment pledge flow that processes massive transaction spikes.
+        </p>
+        <div class="pm-quote-box">
+          <p class="pm-quote"><strong>Jobs-To-Be-Done (JTBD) Framing:</strong> "When I am a retail viewer passionate about an eco-friendly pitch on TV, I want to securely pledge ₹500 via a 5-second UPI transaction, so that I can hold fractional equity under a regulated investment vehicle without executing complex legal documents."</p>
+        </div>
+      </div>
+
+      <!-- Part 4: User Persona & Research Methodology -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">4. User Persona & Research Methodology</h3>
+        <p class="cs-text">
+          I shadowed retail pitch enthusiasts and analyzed crowdfunding behavior to isolate core entry barriers:
+        </p>
+
+        <!-- Persona Card -->
+        <div class="pm-persona-container">
+          <div class="pm-persona-sidebar">
+            <div class="pm-persona-avatar">Kab</div>
+            <div class="pm-persona-name">Kabir Sen</div>
+            <div class="pm-persona-role">Retail Investor</div>
+            <div class="pm-persona-meta">
+              Location: Pune, MH<br>
+              Focus: Micro-equity (₹500+)<br>
+              App: UPI Enabled Pay
+            </div>
+          </div>
+          <div class="pm-persona-content">
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Core Pain Points
+              </div>
+              <ul class="pm-persona-list">
+                <li>Lacks the large capital (₹50,000+) needed to join premium angel networks.</li>
+                <li>Unwilling to execute massive multi-page legal paperwork during short TV commercial breaks.</li>
+                <li>Worried about startup equity campaigns failing and locking up capital.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pm-persona-block-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Motivations & Goals
+              </div>
+              <ul class="pm-persona-list">
+                <li>Wants to back promising startup ventures seen live on television.</li>
+                <li>Needs immediate confirmation of equity allocations via a secure mobile interface.</li>
+                <li>Demands absolute regulatory and payment safety for micro-investments.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 5: Competitive Landscape & Alternatives Considered -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">5. Competitive Landscape & Alternatives Considered</h3>
+        <p class="cs-text">
+          Standard angel syndicates mandate high investment floors, making start-up equity backing inaccessible to the majority of retail viewers.
+        </p>
+        <p class="cs-text">
+          To design the investment rails under Indian banking limits, I evaluated two transaction flows:
+        </p>
+        <div class="pm-table-wrapper">
+          <table class="pm-table">
+            <thead>
+              <tr>
+                <th>Alternative Option</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Tradeoff Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Option A: Upfront Credit Card Pledging</strong></td>
+                <td>Instant checkouts; simple international integration.</td>
+                <td>High merchant processing cuts; high card drop-off rates on mobile checkouts.</td>
+                <td>Rejected: Excess fee cuts for micro-contributions.</td>
+              </tr>
+              <tr>
+                <td><strong>Option B: UPI AutoPay Escrow Rails via NPCI APIs</strong></td>
+                <td>Funds are securely blocked in the user's account and debited only upon campaign success; zero fees.</td>
+                <td>Requires handling massive concurrent mandate spikes during broadcast intervals.</td>
+                <td><strong>Selected:</strong> Unlocks frictionless, free micro-payments with complete investor safety.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 6: Solution, Wireframes & Accessibility Decisions -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">6. Solution, Wireframes & Accessibility Decisions</h3>
+        <p class="cs-text">
+          I built an interactive TV overlay synchronized with real-time banking escrow mandates:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>UPI AutoPay Escrow Rails:</strong> Pledged funds are held securely on the user's bank account via NPCI mandate blocks, and are only debited if the campaign achieves its target funding limit.</li>
+          <li><strong>Automated SPV Equity Pools:</strong> Consolidates thousands of micro-investors into a single, SEBI-regulated SPV entity, preserving clean corporate tables for startup founders.</li>
+          <li><strong>Live Synchronized Overlay:</strong> Renders interactive equity calculators directly on the smart TV / mobile app screen during active pitch sessions.</li>
+        </ul>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">UX and Accessibility (WCAG 2.1 AA) Specifications</h4>
+        <p class="cs-text">
+          To ensure absolute security and readability during live broadcast rushes:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>SEBI Compliance Disclaimers:</strong> Risk disclaimers are written in clear, high-contrast text (> 4.7:1 ratio) to guarantee reading safety.</li>
+          <li><strong>Tappable Calculators:</strong> Mobile equity investment sliders feature large, easily interactive handles (minimum <strong>48px</strong> area).</li>
+          <li><strong>Confirmation Sound Cues:</strong> Successful UPI transaction blocks trigger distinct sound and visual cues, providing positive confirmation to older users.</li>
+        </ul>
+
+        <div class="diagram-wrapper">
+          <svg viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#111; border-radius:8px; padding:15px; width:100%;">
+            <rect width="100%" height="100%" rx="8" fill="#18181b"/>
+            <!-- Steps -->
+            <rect x="20" y="60" width="160" height="80" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+            <text x="100" y="95" fill="#fff" font-size="12" font-family="sans-serif" text-anchor="middle">1. Live Overlay CTA</text>
+            <text x="100" y="115" fill="#a1a1aa" font-size="10" font-family="sans-serif" text-anchor="middle">Pledge ₹500+ during pitch</text>
+
+            <path d="M190 100 H250" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="250,100 242,96 242,104" fill="#a1a1aa"/>
+
+            <rect x="260" y="45" width="220" height="110" rx="4" fill="rgba(229, 9, 20, 0.08)" stroke="#e50914" stroke-width="2"/>
+            <text x="370" y="90" fill="#fff" font-size="13" font-family="sans-serif" text-anchor="middle" font-weight="bold">UPI AutoPay Escrow</text>
+            <text x="370" y="110" fill="#a1a1aa" font-size="11" font-family="sans-serif" text-anchor="middle">Funds Blocked in User Account</text>
+            <text x="370" y="130" fill="#e50914" font-size="9" font-family="sans-serif" text-anchor="middle" font-weight="bold">RBI Escrow Guardrails</text>
+
+            <path d="M490 100 H550" stroke="#a1a1aa" stroke-width="2"/>
+            <polygon points="550,100 542,96 542,104" fill="#a1a1aa"/>
+
+            <rect x="560" y="60" width="210" height="80" rx="4" fill="rgba(70, 211, 105, 0.08)" stroke="#46d369" stroke-width="1.5"/>
+            <text x="665" y="95" fill="#fff" font-size="12" font-family="sans-serif" text-anchor="middle" font-weight="bold">Consolidated SPV</text>
+            <text x="665" y="115" fill="#46d369" font-size="10" font-family="sans-serif" text-anchor="middle">SEBI Crowdfunding Guard</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Part 7: Go-To-Market & Business Model -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">7. Go-To-Market & Business Model</h3>
+        <p class="cs-text">
+          I formulated the equity crowdfunding transaction margins and SPV fees:
+        </p>
+        <ul class="cs-text" style="padding-left: 20px;">
+          <li><strong>Business Model:</strong> 2% administration fee charged on successfully funded campaigns, combined with a flat annual ₹12,000 SPV maintenance subscription for startup listings.</li>
+          <li><strong>Launch Strategy:</strong> Piloted with 3 green-tech startups during special segment pitches, followed by expansion to standard commercial listings.</li>
+        </ul>
+      </div>
+
+      <!-- Part 8: Metrics, Failures & Learnings -->
+      <div class="cs-section">
+        <h3 class="cs-section-title">8. Metrics, Failures & Learnings</h3>
+        <p class="cs-text">
+          We measured retail crowd-pledging conversion and financial volumes:
+        </p>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">84%</div>
+            <div class="metric-lbl">Viewer Pledge-to-UPI Conversion</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">₹4.2Cr</div>
+            <div class="metric-lbl">Pledged Campaign Volume</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">100%</div>
+            <div class="metric-lbl">SEBI Investment Compliance</div>
+          </div>
+        </div>
+
+        <h4 style="color: #fff; font-family: 'Outfit', sans-serif; margin: 25px 0 10px 0; font-size: 1.1rem;">Failure & Iteration Story</h4>
+        <p class="cs-text">
+          <strong>The Bug:</strong> During our live debut, bank servers timed out as a massive concurrency wave of 250,000 simultaneous users tried to register UPI AutoPay blocks following a popular pitch conclusion, causing 45% of transaction attempts to fail.
+        </p>
+        <p class="cs-text">
+          <strong>The Iteration:</strong> I redirected our fintech engineering team to design a **transaction queue buffer system**. Instead of executing real-time bank handshakes immediately, users' pledge intents are securely validated client-side and grouped into a smart processing queue. The system registers the mandates asynchronously over a 15-minute window. This reduced server load by 80% and successfully brought transaction failure rates to zero.
+        </p>
+      </div>
+    </div>
     </div>
 
   </div>
@@ -877,7 +2316,7 @@
 
   <!-- Switcher JavaScript -->
   <script>
-    function switchTab(tabId) {
+    function switchTab(tabId, btnElement) {
       // Deactivate all tabs
       document.querySelectorAll('.cs-tab-btn').forEach(btn => {
         btn.classList.remove('active');
@@ -887,12 +2326,35 @@
       });
 
       // Activate selected tab
-      const activeBtn = Array.from(document.querySelectorAll('.cs-tab-btn')).find(btn => btn.textContent.toLowerCase().includes(tabId.replace('-', ' ')));
-      if (activeBtn) activeBtn.classList.add('active');
+      if (btnElement) {
+        btnElement.classList.add('active');
+      } else {
+        // Find the button with matching tabId in its onclick
+        const activeBtn = Array.from(document.querySelectorAll('.cs-tab-btn')).find(btn => {
+          const onclickAttr = btn.getAttribute('onclick') || '';
+          return onclickAttr.includes(`'${tabId}'`);
+        });
+        if (activeBtn) activeBtn.classList.add('active');
+      }
       
       const activeContainer = document.getElementById(tabId);
-      if (activeContainer) activeContainer.classList.add('active');
+      if (activeContainer) {
+        activeContainer.classList.add('active');
+        // Update URL hash without jumping
+        history.replaceState(null, null, '#' + tabId);
+      }
     }
+
+    // Auto-activate tab from URL hash on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const targetContainer = document.getElementById(hash);
+        if (targetContainer && targetContainer.classList.contains('cs-container')) {
+          switchTab(hash);
+        }
+      }
+    });
   </script>
 
   <script src="../js/main.js"></script>

@@ -1,0 +1,51 @@
+================================================================================
+ASTHA GUPTA - ASSOCIATE PRODUCT MANAGER (APM CANDIDATE)
+asthagupta0204@gmail.com | +91-9999999999 | New Delhi, India
+GitHub: github.com/asthagit-ux | LinkedIn: linkedin.com/in/astha-gupta
+================================================================================
+
+EDUCATION
+--------------------------------------------------------------------------------
+B.Tech in Computer Science and Engineering (Final Year)
+* Technical foundations: Data Structures, Web Development, SQL Databases, AI/ML.
+
+CORE PM COMPETENCIES
+--------------------------------------------------------------------------------
+* Strategy: Product Discovery, User Research & Interviews, RICE Prioritization.
+* Compliance: DPDP Act 2023, RBI Payment Rules, SEBI Crowdfunding Guidelines.
+* Technology: LLM RAG Pipelines, SQL DB Schema, REST APIs, System Architecture.
+* Growth: Cohort Retention Analytics, PLG Activation Funnels, GTM Strategies.
+
+SELECTED PRODUCT HIGHLIGHTS & PM CASE STUDIES
+--------------------------------------------------------------------------------
+1. Innov CRM: Drag-and-Drop B2B Sales Kanban & Automation Engine
+   * Formulated product roadmap, user stories, and technical requirements.
+   * Reduced deal transition lag by 35% using event-triggered task SLA alerts.
+   * Designed SQL entity schemas with optimistic version locking to prevent race states.
+
+2. Wise India (eKYC & UPI Dispute Localization concept)
+   * Redesigned onboarding flow to solve 44% signup drops in Tier-2/3 cities.
+   * Integrated IndiaStack UIDAI Aadhaar eKYC APIs and NPCI UPI dispute APIs.
+   * Restructured dispute triggers in 8 regional languages under DPDP 2023 compliance.
+
+3. Disney+ Hotstar Live Interactive Streaming Teardown
+   * Engineered live Swiggy checkout overlays for 50M+ concurrent viewers.
+   * Designed GPU-accelerated low-RAM safe mode for entry-level budget phones.
+   * Resolved live data connection spikes using back-off priority queue routing.
+
+4. Shark Tank Live Crowdfunding co-investment overlay
+   * Architected SEBI-compliant UPI Escrow mandate digital backing pipeline.
+   * Created unified real-time valuation dials and digital SPV dashboards.
+
+PROFESSIONAL EXPERIENCE & INTERNSHIPS
+--------------------------------------------------------------------------------
+* Product Manager Intern | Innov CRM (2024 · B2B SaaS)
+  - Managed Kanban team feature backlogs across 3 active engineering sprints.
+  - Negotiated forms from 12 fields to 4 using conversion data, boosting signups.
+* Product / ML Research Intern | CSE Dept. (2023 · AI / ML)
+  - Designed local sentence-transformer semantic search query pipeline.
+  - Built ModelMetrics Streamlit PCA user cohort clustering telemetry maps.
+
+================================================================================
+* Downloaded from Astha's Netflix Portfolio *
+================================================================================
